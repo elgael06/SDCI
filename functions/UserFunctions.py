@@ -1,5 +1,5 @@
 from models.UserDoc import UserDoc
-import json
+from werkzeug.security import generate_password_hash
 
 
 def userAll():

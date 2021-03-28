@@ -20,3 +20,11 @@ class UserDoc(Document):
                 "create": self.date_modified,
             })
         return None
+
+
+class UserDataConfirm(Document):
+    userId = ObjectIdField(required=True, primary_key=False)
+    fecha_nac = DateField()
+    puesto = IntField(default=0)
+    access_menu = ListField(default=[])
+    status = BooleanField(default=False)
