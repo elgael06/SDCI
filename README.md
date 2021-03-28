@@ -26,4 +26,4 @@ Antes de iniciar se recomientda crear un entorno virtual.
 
 ## Ejecucion:
 
-para equecurar la aplicacion se debe de ejecutar el comandio  ``python src/app.py`` esto para correr en modo desarrollo.
+para equecurar la aplicacion se debe de ejecutar el comandio  ``sh init.sh `` esto para correr en modo desarrollo.

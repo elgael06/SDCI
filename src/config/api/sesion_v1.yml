@@ -14,7 +14,7 @@ basePath: "/api/v1/sesion"
 paths:
   /{userId}:
     post:
-      operationId: controllers.sesion.check
+      operationId: src.controllers.sesion.check
       tags:
         - "sesion"
       parameters:  
