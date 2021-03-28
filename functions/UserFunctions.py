@@ -4,7 +4,7 @@ import json
 
 def userAll():
     res = []
-    for i in UserDoc.objects():
+    for i in UserDoc.objects:
         print(i.parseJson())
         res.append(i.parseJson())
     return res
