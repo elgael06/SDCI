@@ -12,5 +12,6 @@ connect(
     db='base',
     username='admin',
     password='1234',
-    host='mongodb+srv://admin:1234@cluster0.4geja.mongodb.net/base'
+    host='mongodb+srv://admin:1234@cluster0.4geja.mongodb.net/base',
+    alias='db_base'
 )

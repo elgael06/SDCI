@@ -8,6 +8,8 @@ class UserDoc(Document):
     email = EmailField(required=True, max_length=50, unique=True)
     date_modified = DateTimeField(default=datetime.datetime.now)
 
+    meta = {'db_alias': 'db_base'}
+
     def parseJson(self):
         if self.id is not None:
             return({
