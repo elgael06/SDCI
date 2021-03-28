@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST api
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api/v1/sesion"
+
+# Paths supported by the server application
+paths:
+  /{userId}:
+    post:
+      operationId: controllers.sesion.check
+      tags:
+        - "sesion"
+      parameters:  
+        - name: userId 
+          in: path
+          type: string
+          required: True
+        - name: password
+          in: body
+          required: True
+          schema:
+              type: object
+              properties:
+                value:
+                  type: string
+      responses:
+        201:
+          description: "Successful read users list operation"
+          schema:
+            type: "string"
