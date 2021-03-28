@@ -14,7 +14,7 @@ basePath: "/api/v1/user"
 paths:
   /:
     get:
-      operationId: "src.controllers.user.read"
+      operationId: "controllers.user.read"
       tags:
         - "User"
       summary: "The user data structure supported by the server application"
@@ -33,7 +33,7 @@ paths:
               #   timestamp:
               #     type: "string"
     post:
-      operationId: src.controllers.user.create      
+      operationId: controllers.user.create      
       tags:
         - "CreateUser"
       description: "create a user"
@@ -55,7 +55,7 @@ paths:
           description: Successfully created user in list
   /{id}:
     get:
-      operationId: src.controllers.user.getOne
+      operationId: controllers.user.getOne
       tags:
         - user id
       parameters:
