@@ -17,6 +17,11 @@ paths:
       operationId: "controllers.user.read"
       tags:
         - "User"
+      parameters:
+        - name: email
+          in: query
+          type: string
+          required: false
       summary: "The user data structure supported by the server application"
       description: "Read the list of users"
       responses:
@@ -24,32 +29,24 @@ paths:
           description: "Successful read users list operation"
           schema:
             type: "string"
-            # items:
-              # properties:
-              #   fname:
-              #     type: "string"
-              #   lname:
-              #     type: "string"
-              #   timestamp:
-              #     type: "string"
     post:
-      operationId: controllers.user.create      
+      operationId: controllers.user.create
       tags:
         - "CreateUser"
       description: "create a user"
-      parameters:  
+      parameters:
         - name: user
           in: body
           required: True
           schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                lastname:
-                  type: string
-                email: 
-                  type: string
+            type: object
+            properties:
+              name:
+                type: string
+              lastname:
+                type: string
+              email:
+                type: string
       responses:
         201:
           description: Successfully created user in list
@@ -62,7 +59,7 @@ paths:
         - name: id
           in: path
           type: string
-          required: True    
+          required: True
       responses:
         201:
           description: Successfully get user id
