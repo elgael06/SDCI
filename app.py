@@ -16,7 +16,7 @@ app.add_api('sesion_v1.yml')
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'Este el el index de sistema base para aplicaciones.'
 
 
 if __name__ == "__main__":
