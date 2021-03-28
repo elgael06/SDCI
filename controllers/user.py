@@ -4,7 +4,7 @@ from functions.UserFunctions import userAll, userInsert, userId, userEmail
 
 def read(email=''):
     print(email)
-    if email is '':
+    if email == '':
         return userAll()
     else:
         return userEmail(email)
