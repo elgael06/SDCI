@@ -1,6 +1,13 @@
 from models.UserDoc import UserDoc
-from werkzeug.security import generate_password_hash
+from functions.SesionFunctions import createSesion
 
+
+def getUser(email=''):
+    print(email)
+    if email == '':
+        return userAll()
+    else:
+        return userEmail(email)
 
 def userAll():
     res = []
@@ -10,7 +17,7 @@ def userAll():
     return res
 
 
-def userEmail(email):
+def userEmail(email=''):
     value = UserDoc.objects(email=email).first()
     if value is not None:
         value = value.parseJson()
@@ -28,7 +35,10 @@ def userInsert(name, lastName, email):
     try:
         usr = UserDoc(name=name, lastName=lastName, email=email)
         usr.save()
-        return usr.parseJson()
+        sesion = createSesion(email=email)
+        if sesion:
+            return usr.parseJson()
+        return None
     except:
         print('error...')
         return None

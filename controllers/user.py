@@ -1,14 +1,9 @@
 
-from functions.UserFunctions import userAll, userInsert, userId, userEmail
+from functions.UserFunctions import userInsert, userId, getUser
 
 
 def read(email=''):
-    print(email)
-    if email == '':
-        return userAll()
-    else:
-        return userEmail(email)
-
+    return getUser(email)
 
 def getOne(id):
     return userId(id)
