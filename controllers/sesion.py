@@ -11,7 +11,7 @@ def check(sesion):
         if resp['status']:
             return {'status': True, 'sesion': comp['user'], 'token': resp['token'], 'message': 'sesion iniciada!'}
         elif email:
-            return {'status': False, 'sesion': None, 'message': 'Error en Correo o contraseña!'}
+            return {'status': False, 'sesion': None, 'message': 'Error: contraseña erronea!'}
     return {'status': False, 'sesion': None, 'message': 'Error: El email {email}  no existe!'.format(email=email)}
 
 
