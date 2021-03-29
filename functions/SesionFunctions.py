@@ -37,24 +37,28 @@ def updatePasswordSesion(email='', password='', nPassword=''):
         return False
 
 
-def loginSesion(email='', password=''):
-    usuario = SesionDoc.objects(email=email).first()
+def loginSesion():
     try:
-        check_passw = check_password_hash(usuario.password, password)
-
         auth = request.authorization
-        if usuario is not None and check_passw:
-            hash_passw = generate_password_hash(str(uuid.uuid4()))
-            usuario.token = hash_passw
-            usuario.save()
-            print(hash_passw)
-            return {"status": True, 'token': hash_passw}
+        if auth is not None and auth.username and auth.password:
+            print('user: {user} , pass: {password}'.format(
+                user=auth.username, password=auth.password))
+
+            usuario = SesionDoc.objects(email=auth.username).first()
+
+            check_passw = check_password_hash(usuario.password, auth.password)
+
+            if usuario is not None and check_passw:
+                hash_passw = generate_password_hash(str(uuid.uuid4()))
+                usuario.token = hash_passw
+                usuario.save()
+                return {"status": True, 'token': hash_passw}
         return {"status": False, 'token': None}
     except:
         return {"status": False, 'token': None}
 
 
-@token_required
+@ token_required
 def cancelLogin(current_user, email=''):
     sesion = SesionDoc.objects(email=email, password=hash_passw)
     if sesion is not None:

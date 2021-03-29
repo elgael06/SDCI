@@ -4,14 +4,13 @@ from functions.UserFunctions import userEmail
 
 def check(sesion):
     email = sesion.get('email', None)
-    password = sesion.get('password', None)
-    print(email, password)
+    print(email)
     comp = userEmail(email)
     if comp['user'] is not None:
-        resp = loginSesion(email, password)
+        resp = loginSesion()
         if resp['status']:
             return {'status': True, 'sesion': comp['user'], 'token': resp['token'], 'message': 'sesion iniciada!'}
-        elif email and password:
+        elif email:
             return {'status': False, 'sesion': None, 'message': 'Error en Correo o contraseña!'}
     return {'status': False, 'sesion': None, 'message': 'Error al iniciar sesion!'}
 
