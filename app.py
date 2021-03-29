@@ -1,21 +1,20 @@
 import connexion
 import config.database
+from flask_cors import CORS
 ###
 # se cargan los archivos de rutas
 ##
 # rutas de api base para usuarios
 app = connexion.App(
     __name__, specification_dir='./config/api/')
-app.options._options = {'token':'sistema_web_base'}
-print(app.options._options)#['token'] = 'sistema_web_base';
-# ruta base de api manejo de sesion
-# rutas base para api de menus
 
 ###
 # se agregan las rutas al app
 ##
 app.add_api('user_v1.yml')
 app.add_api('sesion_v1.yml')
+
+CORS(app.app)
 
 
 @app.route('/')
