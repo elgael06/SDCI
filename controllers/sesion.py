@@ -8,8 +8,8 @@ def check(sesion):
     comp = userEmail(email)
     if comp['user'] is not None :
         resp = loginSesion(email,password)
-        if resp:
-            return {'status':True,'sesion':comp['user'], 'message':'sesion iniciada!'}
+        if resp['status']:
+            return {'status':True,'sesion':comp['user'], 'token':resp['token'],'message':'sesion iniciada!'}
         elif email and password:
             return {'status':False,'sesion':None, 'message':'Error en Correo o contraseña!'}
     return {'status':False,'sesion':None, 'message':'Error al iniciar sesion!'}

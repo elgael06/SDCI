@@ -1,15 +1,18 @@
 
 from functions.UserFunctions import userInsert, userId, getUser
+from functions.check_token import token_required
 
 
-def read(email=''):
+@token_required
+def read(current_user,email=''):
+    print(current_user.email)
     return getUser(email)
 
 def getOne(id):
     return userId(id)
 
-
-def create(user):
+@token_required
+def create(current_user,user):
     name = user.get('name', None)
     lasName = user.get('lastname', None)
     email = user.get('email', None)

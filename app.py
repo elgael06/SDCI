@@ -4,8 +4,10 @@ import config.database
 # se cargan los archivos de rutas
 ##
 # rutas de api base para usuarios
-app = connexion.FlaskApp(
+app = connexion.App(
     __name__, specification_dir='./config/api/')
+app.options._options = {'token':'sistema_web_base'}
+print(app.options._options)#['token'] = 'sistema_web_base';
 # ruta base de api manejo de sesion
 # rutas base para api de menus
 

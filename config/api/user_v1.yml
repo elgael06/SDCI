@@ -16,7 +16,7 @@ paths:
     get:
       operationId: "controllers.user.read"
       tags:
-        - "User"
+        - "Users"
       parameters:
         - name: email
           in: query
@@ -32,7 +32,7 @@ paths:
     post:
       operationId: controllers.user.create
       tags:
-        - "CreateUser"
+        - "Create"
       description: "create a user"
       parameters:
         - name: user

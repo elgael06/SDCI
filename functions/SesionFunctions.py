@@ -2,6 +2,9 @@
 from models.SesionDoc import SesionDoc
 from werkzeug.security import generate_password_hash,check_password_hash
 import datetime
+import uuid
+from connexion import request
+from functions.check_token import token_required
 
 def createSesion(email=''):
     try:
@@ -31,15 +34,20 @@ def updatePasswordSesion(email='',password='',nPassword=''):
         return False    
 
 def loginSesion(email='',password=''):
-    hash_passw = generate_password_hash(password)
     usuario = SesionDoc.objects(email=email).first()
     check_passw = check_password_hash(usuario.password,password) 
-    
+    auth = request.authorization   
     if usuario is not None and check_passw:
-        return True
+        hash_passw = generate_password_hash(str(uuid.uuid4()))
+        usuario.token = hash_passw
+        usuario.save()
+        print( hash_passw)
+        print(request.headers['x-access-tokens'] )
+        return {"status":True,'token':hash_passw}
     return False
 
-def cancelLogin(email=''):
+@token_required
+def cancelLogin(current_user,email=''):
     sesion = SesionDoc.objects(email=email,password=hash_passw)
     if sesion is not None:
         sesion.status = False
