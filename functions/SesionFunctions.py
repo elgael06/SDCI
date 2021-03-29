@@ -44,7 +44,8 @@ def loginSesion():
             print('user: {user} , pass: {password}'.format(
                 user=auth.username, password=auth.password))
 
-            usuario = SesionDoc.objects(email=auth.username).first()
+            usuario = SesionDoc.objects(
+                email=auth.username, status=True).first()
 
             check_passw = check_password_hash(usuario.password, auth.password)
 

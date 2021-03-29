@@ -3,6 +3,7 @@ from functools import wraps
 from connexion import request
 from models.SesionDoc import SesionDoc
 
+
 def token_required(f):
     @wraps(f)
     def decorator(*args, **kwargs):
@@ -16,11 +17,10 @@ def token_required(f):
             return {'message': 'a valid token is missing'}
 
         try:
-            current_user = SesionDoc.objects(token=token).first()
+            current_user = SesionDoc.objects(token=token, status=True).first()
         except:
             return {'message': 'token is invalid'}
         if current_user:
-            return f(current_user,*args, **kwargs)
+            return f(current_user, *args, **kwargs)
         return {'message': 'token is invalid'}
     return decorator
-
