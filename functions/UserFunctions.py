@@ -1,5 +1,5 @@
-from models.UserDoc import UserDoc
-from functions.SesionFunctions import createSesion
+from models.UserDoc import UserDoc, UserDataConfirm
+from functions.SesionFunctions import createSesion, updatePasswordSesion
 
 
 def getUser(email=''):
@@ -8,6 +8,7 @@ def getUser(email=''):
         return userAll()
     else:
         return userEmail(email)
+
 
 def userAll():
     res = []
@@ -42,3 +43,28 @@ def userInsert(name, lastName, email):
     except:
         print('error...')
         return None
+
+
+def userConfirm(id='', phone='', date='', puesto='', password='', nPassword=''):
+    try:
+        user = userId(id)
+        if user['user'] is not None:
+            datos = UserDataConfirm(
+                userId=id,
+                number_phone=phone,
+                fecha_nac=date,
+                puesto=puesto
+            )
+            datos.save()
+            email = user['user']['email']
+            changePassword = updatePasswordSesion(
+                email=email,
+                password=password,
+                nPassword=nPassword
+            )
+            if changePassword:
+                return {'messaje': 'Usuario actualizado correctamente...', 'status': True}
+            return {'messaje': 'Error en contraseña de usuario!', 'status': False}
+        return {'messaje': 'Error id :{id} , no encontrado!'.format(id=id), 'status': False}
+    except:
+        return {'messaje': 'Error al confirmar datos de usuario!', 'status': False}

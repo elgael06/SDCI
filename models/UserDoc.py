@@ -24,6 +24,7 @@ class UserDoc(Document):
 
 class UserDataConfirm(Document):
     userId = ObjectIdField(required=True, primary_key=False)
+    number_phone = StringField()
     fecha_nac = DateField()
     puesto = IntField(default=0)
     access_menu = ListField(default=[])

@@ -63,3 +63,31 @@ paths:
       responses:
         201:
           description: Successfully get user id
+  /confirm:
+    post:
+      operationId: controllers.user.confirm
+      tags:
+        - confirmar usuario
+      description: confirma datos de usuario
+      parameters:
+        - name: data
+          in: body
+          required: True
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              phone:
+                type: string
+              date:
+                type: string
+              puesto:
+                type: string
+              password:
+                type: string
+              nPassword:
+                type: string
+      responses:
+        201:
+          description: Successfully confirm user
