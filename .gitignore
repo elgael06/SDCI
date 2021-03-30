@@ -2,10 +2,17 @@
 *.pyc
 env/
 
-*~/config/__pycache__/
-*~/models/__pycache__/
-.vscode/
+.vscode
+*.vscode
 *~ __pycache__
 *.py[cod]
 *$py.class
 *~.pyc
+!**/__pycache__/
+**/__pycache__/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace

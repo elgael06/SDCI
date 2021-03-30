@@ -11,19 +11,21 @@
 
 ## Uso de apis:
 
-Las apis son creadas en la seccion de controllers, para exponerlas se crea un archivo de configuracion en la seccion de ``config/api/[controller].yml`` donde controller es el nombre del archivo de configuracion para una ruta en especifico. 
+Las apis son creadas en la seccion de controllers, para exponerlas se crea un archivo de configuracion en la seccion de `config/api/[controller].yml` donde controller es el nombre del archivo de configuracion para una ruta en especifico.
 
 ## entorno virtual:
-Antes de iniciar se recomientda crear un entorno virtual.
-- Installa virtualenv: ``` pip3 install virtualenv```.
-- Crea el entorno virtual: ```virtualenv env```.
-- Accede al entorno virtual(Linux): ```source env/bin/activate```.
 
+Antes de iniciar se recomientda crear un entorno virtual.
+
+- Installa virtualenv: ` pip3 install virtualenv`.
+- Crea el entorno virtual: `virtualenv env`.
+- Accede al entorno virtual(Linux): `source env/bin/activate`.
 
 ## Requerimientos:
-- Para instalar los requerimientos se debe ejecutar el comando -> ``pip freeze install -r requirements.txt``
-- Para guardar los requerimientos usa el comando ->  ``pip freeze > requirements.txt`` 
+
+- Para instalar los requerimientos se debe ejecutar el comando -> `pip install -r requirements.txt`
+- Para guardar los requerimientos usa el comando -> `pip freeze > requirements.txt`
 
 ## Ejecucion:
 
-para equecurar la aplicacion se debe de ejecutar el comandio  ``python app.py `` esto para correr en modo desarrollo.
+para equecurar la aplicacion se debe de ejecutar el comandio `python app.py ` esto para correr en modo desarrollo.
