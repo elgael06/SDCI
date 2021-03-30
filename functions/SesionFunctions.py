@@ -1,5 +1,5 @@
 
-from models.SesionDoc import SesionDoc
+from models.SesionDoc import SesionDoc, DEFAULT_PASSWORD
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 import uuid
@@ -35,6 +35,19 @@ def updatePasswordSesion(email='', password='', nPassword=''):
             return False
     except:
         return False
+
+
+def restorePassword(email):
+    try:
+        sesion = SesionDoc.objects(
+            email=email
+        )
+        if sesion is not None:
+            sesion.password = DEFAULT_PASSWORD
+            sesion.save()
+            return {'message': 'password restaurado a Async12@ ...', 'status': True}
+    except:
+        return {'message': 'Error al restaur el password!', 'status': False}
 
 
 def loginSesion():
