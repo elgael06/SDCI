@@ -1,0 +1,10 @@
+
+*.pyc
+env/
+
+config/__pycache__/
+/models/__pycache__
+.vscode/
+*~ __pycache__/
+*.py[cod]
+*$py.class
