@@ -4,7 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 import uuid
 from connexion import request
-from functions.check_token import token_required
 
 
 def createSesion(email=''):
@@ -54,11 +53,10 @@ def loginSesion():
     try:
         auth = request.authorization
         if auth is not None and auth.username and auth.password:
-            print('user: {user} , pass: {password}'.format(
-                user=auth.username, password=auth.password))
-
             usuario = SesionDoc.objects(
-                email=auth.username, status=True).first()
+                email=auth.username,
+                status=True
+            ).first()
 
             check_passw = check_password_hash(usuario.password, auth.password)
 
@@ -72,7 +70,6 @@ def loginSesion():
         return {"status": False, 'token': None}
 
 
-@ token_required
 def cancelLogin(current_user, email=''):
     sesion = SesionDoc.objects(email=email, password=hash_passw)
     if sesion is not None:
