@@ -1,4 +1,4 @@
-# Aplicacion base para backEnd
+# Aplicacion base para sistemas web
 
 ## Especificaciones:
 
@@ -29,3 +29,16 @@ Antes de iniciar se recomientda crear un entorno virtual.
 ## Ejecucion:
 
 para equecurar la aplicacion se debe de ejecutar el comandio `python app.py ` esto para correr en modo desarrollo.
+
+## Desarrollo de front:
+
+Para ejecurtar en modo desarrollo sigue los siguientes pasos:
+
+- Necesitas node 10 o superior.
+- Acceder a la carpeta frontend instala las dependecias(ejecutar `npm i`) .
+- Luego ejecuta el servidor de desarrollo (`npm start`).
+- Para compilar ejecutar (`npm run build`).
+
+## Directorios:
+
+Los archivos estaticos se agregaran en la carpeta static de la raiz de la aplicacion en la carpeta template se guardara el index.html
