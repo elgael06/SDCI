@@ -16,11 +16,12 @@ app = connexion.FlaskApp(
 app.add_api('user_v1.yml')  # api v1 usuarios
 app.add_api('sesion_v1.yml')  # api v1 sesion
 CORS(app.app)  # activacion de cors
-url_for('/template/assets/')
 
 
 @app.route('/')
-def index():
+@app.route('/page/<name>')
+def index(name=None):
+    print(name)
     return render_template('index.html')
 
 
