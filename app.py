@@ -1,24 +1,28 @@
 import connexion
 import config.database.mongo_bd
+from flask import render_template
 from flask_cors import CORS
+from flask import url_for
 
 ##
 # instancia de la app con la rutas de configuracion de las api.
 ##
-app = connexion.App(
-    __name__, specification_dir='./config/api/', options={"swagger_ui": False})
+app = connexion.FlaskApp(
+    __name__, options={"swagger_ui": False}, specification_dir='./config/api/')
 
 ###
 # se agregan las rutas al app
 ##
 app.add_api('user_v1.yml')  # api v1 usuarios
 app.add_api('sesion_v1.yml')  # api v1 sesion
-CORS(app.app)   # activacion de cors
+CORS(app.app)  # activacion de cors
 
 
 @app.route('/')
-def index():
-    return 'Este el el index de sistema base para aplicaciones.'
+@app.route('/page/<name>')
+def index(name=None):
+    print(name)
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
