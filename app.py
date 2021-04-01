@@ -19,8 +19,12 @@ CORS(app.app)  # activacion de cors
 
 
 @app.route('/')
-@app.route('/page/<name>')
-def index(name=None):
+@app.route('/<page>/')
+@app.route('/<page>/<name>/')
+@app.route('/page/<name>/<modulo>/')
+@app.route('/page/<name>/<modulo>/<submodulo>/')
+@app.route('/page/<name>/<modulo>/<submodulo>/<id>/')
+def index(page=None, name=None, modulo=None, submodulo=None, id=None):
     print(name)
     return render_template('index.html')
 
