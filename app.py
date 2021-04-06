@@ -18,16 +18,12 @@ app.add_api('sesion_v1.yml')  # api v1 sesion
 CORS(app.app)  # activacion de cors
 
 
-@app.route('/')
-@app.route('/<page>/')
-@app.route('/<page>/<name>/')
-@app.route('/page/<name>/<modulo>/')
-@app.route('/page/<name>/<modulo>/<submodulo>/')
-@app.route('/page/<name>/<modulo>/<submodulo>/<id>/')
-def index(page=None, name=None, modulo=None, submodulo=None, id=None):
-    print(name)
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
+    print(path)
     return render_template('index.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=9000)

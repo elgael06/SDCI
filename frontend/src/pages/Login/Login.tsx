@@ -32,7 +32,6 @@ const Login = () => {
 
     const submitLogin = async (e:any) => {
         e.preventDefault();
-        console.log(state);
         setState({
             ...state,
             loading: true,
