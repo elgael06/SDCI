@@ -15,7 +15,7 @@ export const chekSesion = ({ email='',password=''}) => {
         }));
         setTimeout(()=>dispatch(menssageOff()),2000);
         if (data.status) {
-            dispatch({ type: 'ADD_SESION', value: { ...data.sesion, status: data.status } });            
+            dispatch({ type: 'ADD_SESION', value: { ...data.sesion, status: data.status, token:data.token } });
         }
     }
 }

@@ -23,7 +23,8 @@ export const sesionInitialState:sesionStateType ={
     status:false
 } 
 
-export const sesion = (state=sesionInitialState,actions:actionType)=>{
+export const sesion = (state = sesionInitialState, actions: actionType) => {
+    
     switch (actions.type) {
         case 'ADD_SESION':
             return {...state,...actions.value};

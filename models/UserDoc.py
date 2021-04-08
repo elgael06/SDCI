@@ -29,3 +29,5 @@ class UserDataConfirm(Document):
     puesto = IntField(default=0)
     access_menu = ListField(default=[])
     status = BooleanField(default=False)
+
+    meta = {'db_alias': 'db_base'}
