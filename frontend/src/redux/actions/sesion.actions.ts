@@ -19,3 +19,10 @@ export const chekSesion = ({ email='',password=''}) => {
         }
     }
 }
+
+export const cerrarSecion = () => {
+    
+    return (dispatch: Function) => {
+        dispatch({type:'REMOVE_SESION'})
+    }
+}
