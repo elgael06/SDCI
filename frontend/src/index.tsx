@@ -18,6 +18,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 defineCustomElements(window);
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register();
 
 reportWebVitals();
