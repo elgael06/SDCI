@@ -16,7 +16,7 @@ type formType = {
 const initialStateForm: formType = {
     email: '',
     password: '',
-    statusPass:true
+    statusPass:false
 }
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
     }
 
     return <LayoutLogin>
-        <Form onSubmit={submitLogin}>
+        <Form onSubmit={submitLogin} name='login'>
             <FormLogin
                 title='Correo'
                 required={true}
