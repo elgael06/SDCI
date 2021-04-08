@@ -30,12 +30,14 @@ import RoutesActividades from './pages/Actividades/routes';
 import RoutesPlatillos from './pages/Platillos/routes';
 import { useSelector } from 'react-redux';
 import Login from './pages/Login/Login';
+import LoadingComp from './components/effects/LoadingComp';
+import DialogComp from './components/effects/DialogComp';
 
 const App: React.FC = () => {
 
   const { status=false } = useSelector((state: any) => state.sesion);
-  return status ? (
-    <IonApp>
+  return <IonApp> {status ? (
+    <>
       <IonReactRouter>
         <IonSplitPane contentId="main">
           <Menu />
@@ -53,25 +55,30 @@ const App: React.FC = () => {
                 <Redirect to="/page/Inicio" />
               </Route>
               <Route path="/page/Inicio" exact={true} component={Home} />
-              <Route path="/page/Platillos" component={RoutesPlatillos} />     
+              <Route path="/page/Platillos" component={RoutesPlatillos} />
               
               <Route path="/page/Actividades" component={RoutesActividades} />
               <Route path="/page/Destinos" component={RoutesDestinos} />
-              <Route path="/page/Gastos" component={RoutesGastos} />  
+              <Route path="/page/Gastos" component={RoutesGastos} />
               <Route path='/page/Usuarios' component={RoutesUsuarios} />
 
             </Switch>
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
+    </>
+  ) :
+    <IonApp>
+      <IonReactRouter>
+        <Route path="/page/login" exact={true} component={Login} />
+        <Route path="/" >
+          <Redirect to="/page/login" />
+        </Route>
+      </IonReactRouter>
     </IonApp>
-  ): <IonApp>
-    <IonReactRouter>
-      <Route path="/page/login" exact={true} component={Login} />
-      <Route path="/" >
-        <Redirect to="/page/login" />
-      </Route>
-    </IonReactRouter>
+  }
+    <LoadingComp />
+    <DialogComp /> 
   </IonApp>;
 };
 

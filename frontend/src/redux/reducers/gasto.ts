@@ -26,8 +26,8 @@ export const initGasto:stateGasto = {
 export const formGasto = (state=initGasto, action:actionType):stateGasto => { 
 
     switch (action.type) { 
-        case 'addTipo':  return { ...state, tipo: action.value };
-        case 'addDesc':  return { ...state, descripcion: action.value };
+        case 'addTipo' : return { ...state, tipo: action.value };
+        case 'addDesc' : return { ...state, descripcion: action.value };
         case 'addCosto': return { ...state, costo: action.value };
         case 'addImage': return { ...state, imgComp: action.value };
         case 'addLista': return { ...state, lista: action.value };

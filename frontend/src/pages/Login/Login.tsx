@@ -6,6 +6,8 @@ import imagen from './assets/mar_1.jpg';
 import { useState } from "react";
 import { login } from "../../api/login";
 import { useDispatch } from "react-redux";
+import { loaddingOff, loaddingOn } from "../../redux/actions/effects.actions";
+import { chekSesion } from "../../redux/actions/sesion.actions";
 
 type formType = {
     email: string,
@@ -30,32 +32,9 @@ const Login = () => {
     const [state, setState] = useState<formType>(initialStateForm);
     const dispatch = useDispatch();
 
-    const submitLogin = async (e:any) => {
+    const submitLogin = (e:any) => {
         e.preventDefault();
-        setState({
-            ...state,
-            loading: true,
-        });
-        const data = await login(state.email, state.password);
-        // alert(data.message)
-        setState({
-            ...state,
-            statusRes:data.status,
-            statusAlert: true,
-            messageAlert: data.message,
-        })
-        if (data.status) {                
-            dispatch({ type: 'ADD_SESION', value: { ...data.sesion, status: data.status } })
-        }
-        setTimeout(() => {
-            setState({
-                ...state,
-                statusAlert: false,
-                messageAlert: '',
-                loading:false
-            });
-        }, 2000)
-        
+        dispatch(chekSesion(state));
     }
 
     return <IonPage>
@@ -107,19 +86,7 @@ const Login = () => {
                         </Form>
                     </IonCardContent>
                 </IonCard>
-            </div>
-                {state.statusAlert && <Alert style={{position:'fixed',top:10,left:20}} variant={state.statusRes ? 'info' :'danger'}>
-                    { state.messageAlert}
-            </Alert>}
-            <IonLoading
-                cssClass='my-custom-class'
-                isOpen={state.loading}
-                onDidDismiss={() => setState({
-                    ...state,
-                    loading: false,
-                })}
-                message={'cargando...'}
-            />
+            </div>            
         </IonContent>
     </IonPage>
 }
