@@ -18,6 +18,8 @@ export const usurioSeleccionado = (state=usuarioSelInit, actions:selectedAction)
     switch (actions.type) {
         case 'SELECTED_USER_ID':
             return actions.value;
+        case 'DEFAULT_USER_ID':
+            return usuarioSelInit;
         case 'USER_NAME':
             return { ...state, name: actions.value };
         case 'USER_LAST_NAME':

@@ -1,6 +1,8 @@
+import { useEffect } from "react"
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Title from "../../components/Title"
+import { defaultUserValues } from "../../redux/actions/userSelect.actions"
 import { userInitial } from "../../redux/reducers/usuarios"
 import FormLogin from "../Login/components/FormLogin"
 
@@ -12,14 +14,28 @@ const NuevoUsuario: React.FC = () => {
         name= '',
         lastName= '',
         email= '',
-        create= '',
         puesto=''
-    }: userInitial = useSelector((state:any) => state.usurioSeleccionado);
+    }: userInitial = useSelector((state: any) => state.usurioSeleccionado);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(defaultUserValues());
+    },[])
+
+    const handleSave = (e: any) => {
+        e.preventDefault();
+        console.log(
+        name,
+        lastName,
+        email,
+        puesto
+        );
+    }
 
     return <Container>
         <Title name='Crear nuevo usuario' />
 
-        <Form>
+        <Form onSubmit={handleSave}>
 
             <Row sm='12'>
                 <Col sm={ancho_col}>
@@ -31,26 +47,21 @@ const NuevoUsuario: React.FC = () => {
                         name='nombre'
                         placeholder='Nombre(s)...'
                         // size="sm"
+                        value={name}
+                        onChange={(e:any) => dispatch({type:'USER_NAME',value:e.target.value})}
                     />
                 </Col>
                 <Col sm={ancho_col}>
                     <FormLogin
-                        title='Apeido Paterno'
+                        title='Apeidos'
                         required={true}
                         minLength={4}
                         type='text'
                         name='apP'
-                        placeholder='Apeido paterno'
+                        placeholder='Apeidos...'
+                        value={lastName}
                         // size="sm"
-                    />
-                </Col>
-                <Col sm={ancho_col}>
-                    <FormLogin
-                        title='Apeido materno'
-                        type='text'
-                        name='apM'
-                        placeholder='Apeido materno '
-                        // size="sm"
+                        onChange={(e:any) => dispatch({type:'USER_LAST_NAME',value: ` ${e.target.value}`})}
                     />
                 </Col>
 
@@ -62,13 +73,19 @@ const NuevoUsuario: React.FC = () => {
                         type='email'
                         name='user'
                         placeholder='usuario@dominio.abc'
+                        value={email}
                         // size="sm"
+                        onChange={(e:any) => dispatch({type:'USER_EMAIL',value:e.target.value})}
                     />
                 </Col>
                 <Col sm={ancho_col}>
                     <Form.Group>
                         <Form.Label>Puesto</Form.Label>
-                        <Form.Control as='select' value={puesto}>
+                        <Form.Control
+                            as='select'
+                            value={puesto}
+                            onChange={(e:any) => dispatch({ type: 'USER_PUESTO', value: e.target.value })}
+                        >
                             <option value=''> -- </option>
                             <option>Administrador</option>
                             <option>Direccion</option>
