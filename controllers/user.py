@@ -13,13 +13,19 @@ def getOne(id):
     return userId(id)
 
 
-def create(user):
+@token_required
+def create(current_user, user):
     name = user.get('name', None)
     lasName = user.get('lastname', None)
     email = user.get('email', None)
 
     if name and lasName and email:
-        user = userInsert(name=name, email=email, lastName=lasName)
+        user = userInsert(
+            name=name,
+            email=email,
+            lastName=lasName,
+            userCreate=current_user
+        )
         status = False
         message = 'user not save, check email!'
         if user is not None:

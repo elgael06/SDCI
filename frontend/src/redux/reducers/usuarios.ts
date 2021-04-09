@@ -8,14 +8,12 @@ export type userInitial = {
     create: string,
     email: string,
     name: string,
-    lastName:string,
+    lastName: string,
+    puesto?:string,
 }
 
 
 export const usuarios = (state: userInitial[] = [], action: usuarioAction) => {
-    
-    console.log('usuarios ',action.value);
-    
     switch (action.type) {
         case 'LISTA_USUARIOS':
             return action.value;

@@ -2,6 +2,7 @@
 from functools import wraps
 from connexion import request
 from models.SesionDoc import SesionDoc
+from models.UserDoc import UserDoc
 
 
 def token_required(f):
@@ -21,6 +22,7 @@ def token_required(f):
         except:
             return {'message': 'token is invalid'}
         if current_user:
-            return f(current_user, *args, **kwargs)
+            user = UserDoc.objects(email=current_user.email).first()
+            return f(user.id, *args, **kwargs)
         return {'message': 'token is invalid'}
     return decorator

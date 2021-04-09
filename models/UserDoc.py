@@ -6,6 +6,7 @@ class UserDoc(Document):
     name = StringField(required=True, max_length=20)
     lastName = StringField(required=True, max_length=30)
     email = EmailField(required=True, max_length=50, unique=True)
+    userCreate = ObjectIdField(default='')
     date_modified = DateTimeField(default=datetime.datetime.now)
 
     meta = {'db_alias': 'db_base'}

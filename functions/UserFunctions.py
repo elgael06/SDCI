@@ -32,9 +32,14 @@ def userId(id):
     return {"user": value}
 
 
-def userInsert(name, lastName, email):
+def userInsert(name, lastName, email, userCreate):
     try:
-        usr = UserDoc(name=name, lastName=lastName, email=email)
+        usr = UserDoc(
+            name=name,
+            lastName=lastName,
+            email=email,
+            userCreate=userCreate
+        )
         usr.save()
         sesion = createSesion(email=email)
         if sesion:
