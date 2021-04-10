@@ -25,10 +25,21 @@ class UserDoc(Document):
 
 class UserDataConfirm(Document):
     userId = ObjectIdField(required=True, primary_key=False)
-    number_phone = StringField()
+    number_phone = StringField(default='')
     fecha_nac = DateField()
-    puesto = IntField(default=0)
+    puesto = StringField(default='')
     access_menu = ListField(default=[])
     status = BooleanField(default=False)
 
     meta = {'db_alias': 'db_base'}
+
+    def parseJson(self):
+        if self.userId is not None:
+            return {
+                'number_phone': self.number_phone,
+                'feha_nac': self.fecha_nac,
+                'puesto': self.puesto,
+                'access_menu': self.access_menu,
+                'status': self.status
+            }
+        return None

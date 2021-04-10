@@ -20,9 +20,10 @@ def token_required(f):
         try:
             current_user = SesionDoc.objects(token=token, status=True).first()
         except:
-            return {'message': 'token is invalid'}
+            return {'message': 'token is invalid'}, 401
         if current_user:
             user = UserDoc.objects(email=current_user.email).first()
+            print(user.id)
             return f(user.id, *args, **kwargs)
-        return {'message': 'token is invalid'}
+        return {'message': 'token is invalid'}, 401
     return decorator

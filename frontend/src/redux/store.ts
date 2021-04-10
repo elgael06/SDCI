@@ -21,8 +21,6 @@ const initialState = {
     usuarios    : [],
     usurioSeleccionado:usuarioSelInit,
 }
-console.log(usuarioSelInit);
-
 
 export default createStore(
     reducers,

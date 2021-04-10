@@ -26,10 +26,20 @@ def userEmail(email=''):
 
 
 def userId(id):
-    value = UserDoc.objects(id=id).first()
-    if value is not None:
-        value = value.parseJson()
-    return {"user": value}
+    user = UserDoc.objects(id=id).first()
+    if user is not None:
+        value = user.parseJson()
+        print(value)
+        datos = UserDataConfirm.objects(userId=user.id).first()
+        print('datos: ', datos)
+        if datos is None:
+            datos = UserDataConfirm()
+            print(datos.number_phone)
+            datos.userId = user.id
+            datos.save()
+        datos = datos.parseJson()
+        return {"user": value, 'data': datos}
+    return {"user": None, 'data': None, }, 401
 
 
 def userInsert(name, lastName, email, userCreate):

@@ -9,6 +9,10 @@ export const login = async (username = '', password = '') => {
                 'Authorization': `Basic ${token}`
             },
         });
+        axios.defaults.headers.post['x-access-tokens'] = data.token;
+        axios.defaults.headers.get['x-access-tokens'] = data.token;
+        axios.defaults.headers.put['x-access-tokens'] = data.token;
+        axios.defaults.headers.delete['x-access-tokens'] = data.token;
         return data;
     } catch(error){
         return {

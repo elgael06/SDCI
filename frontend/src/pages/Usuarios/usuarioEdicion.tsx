@@ -1,14 +1,18 @@
 import { useEffect } from "react"
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router"
 import Title from "../../components/Title"
 import { defaultUserValues } from "../../redux/actions/userSelect.actions"
+import { usuarioId } from "../../redux/actions/usuarios.actions"
 import { userInitial } from "../../redux/reducers/usuarios"
 import FormLogin from "../Login/components/FormLogin"
 
 
 const ancho_col = '6'
 const NuevoUsuario: React.FC = () => {
+    const {idUser} = useParams<{idUser:string}>();
+    // const { token='NA' } = useSelector((state: any) => state.sesion);
     const {
         id= '',
         name= '',
@@ -20,7 +24,16 @@ const NuevoUsuario: React.FC = () => {
 
     useEffect(() => {
         dispatch(defaultUserValues());
-    },[])
+        idUser && consultalUsuario();
+        
+    }, []);
+
+    const consultalUsuario = () => {
+        console.log('consultar...');
+        console.log('id: ', idUser);
+        dispatch(usuarioId(idUser));
+        
+    }
 
     const handleSave = (e: any) => {
         e.preventDefault();
@@ -33,7 +46,7 @@ const NuevoUsuario: React.FC = () => {
     }
 
     return <Container>
-        <Title name='Crear nuevo usuario' />
+        <Title name={`${idUser ?'Editar': 'Crear'}:`} />
 
         <Form onSubmit={handleSave}>
 
@@ -61,7 +74,7 @@ const NuevoUsuario: React.FC = () => {
                         placeholder='Apeidos...'
                         value={lastName}
                         // size="sm"
-                        onChange={(e:any) => dispatch({type:'USER_LAST_NAME',value: ` ${e.target.value}`})}
+                        onChange={(e:any) => dispatch({type:'USER_LAST_NAME',value: `${e.target.value}`})}
                     />
                 </Col>
 
@@ -84,6 +97,7 @@ const NuevoUsuario: React.FC = () => {
                         <Form.Control
                             as='select'
                             value={puesto}
+                            required
                             onChange={(e:any) => dispatch({ type: 'USER_PUESTO', value: e.target.value })}
                         >
                             <option value=''> -- </option>
@@ -98,8 +112,9 @@ const NuevoUsuario: React.FC = () => {
                         </Form.Control>
                     </Form.Group>
                 </Col>
+                <Col sm={ancho_col}></Col>
                 <Col sm={ancho_col} style={{display:'flex',flexDirection:'column-reverse',justifyContent:'center'}}>
-                    <Button block type='submit'> GUARDAR</Button>
+                    <Button block type='submit'> {idUser?'ACTUALIZAR':'GUARDAR'}</Button>
                 </Col>
             </Row>
             

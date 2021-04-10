@@ -9,7 +9,7 @@ def read(current_user, email=''):
 
 
 @token_required
-def getOne(id):
+def getOne(current_user, id):
     return userId(id)
 
 
