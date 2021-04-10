@@ -6,7 +6,7 @@ import { efectaInitial } from "../../redux/reducers/effects";
 const DialogComp = () => {
     const { message }: efectaInitial = useSelector((state: any) => state.effects);
     
-    return message.status ? <Alert style={{ position: 'fixed', top: 10, left: 20 }} variant={message.type}>
+    return message.status ? <Alert style={{ position: 'fixed', top: 2, right: 2 }} variant={message.type}>
         {message.text}
     </Alert>: null;
 }

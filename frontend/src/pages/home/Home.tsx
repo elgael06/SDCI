@@ -14,7 +14,7 @@ const Home: React.FC = () => {
                 <IonCardSubtitle>{data_app.title}</IonCardSubtitle>
                 <br/>
                 <IonLabel>
-                    { data_app.description}
+                    {/* { data_app.description} */}
                 </IonLabel>
             </IonCardContent>
         </IonCard>
@@ -22,7 +22,7 @@ const Home: React.FC = () => {
                 <IonTitle>Descripcion accesos:</IonTitle>
 
                 <IonList>
-                    {data_app.data_access.map((value: any, index: number) =>
+                    {/* {data_app.data_access.map((value: any, index: number) =>
                         <IonItem key={index} slot='start'>
                             <label>
                                 {value.name}:
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
                             </label>
                             <IonIcon slot='end' icon={menu} />
                         </IonItem>
-                    )}
+                    )} */}
                 </IonList>
     </Layout>
 } 
