@@ -75,7 +75,7 @@ def userConfirm(email='', phone='', date='', password='', nPassword=''):
                 userId=user['user']['id'],
                 number_phone=phone,
                 fecha_nac=date,
-                status: True
+                status=True
             )
             datos.save()
             changePassword = updatePasswordSesion(
