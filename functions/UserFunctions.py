@@ -67,18 +67,17 @@ def checkDatosUser(id=''):
     return {}
 
 
-def userConfirm(id='', phone='', date='', puesto='', password='', nPassword=''):
+def userConfirm(email='', phone='', date='', password='', nPassword=''):
     try:
-        user = userId(id)
+        user = userEmail(email)
         if user['user'] is not None:
             datos = UserDataConfirm(
-                userId=id,
+                userId=user['user']['id'],
                 number_phone=phone,
                 fecha_nac=date,
-                puesto=puesto
+                status: True
             )
             datos.save()
-            email = user['user']['email']
             changePassword = updatePasswordSesion(
                 email=email,
                 password=password,

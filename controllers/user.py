@@ -38,11 +38,10 @@ def create(current_user, user):
 
 
 def confirm(data):
-    id = data.get('id', None)
+    email = data.get('email', None)
     phone = data.get('phone', None)
     date = data.get('date', None)
-    puesto = data.get('puesto', None)
     password = data.get('password', None)
     nPassword = data.get('nPassword', None)
 
-    return userConfirm(id, phone, date, puesto, password, nPassword)
+    return userConfirm(email, phone, date, password, nPassword)

@@ -70,7 +70,10 @@ const Login = () => {
             </IonButton>
 
         </Form>
-        <ModalConfirm email={state.email} />
+        <ModalConfirm
+            email={state.email}
+            password={state.password}
+        />
     </LayoutLogin>
 }
 
