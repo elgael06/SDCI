@@ -1,12 +1,13 @@
 import { getAllUsers, getAUserId } from "../../api/users.api"
 import { loaddingOff, loaddingOn, menssageOff, menssageOn } from "./effects.actions";
+import types from '../types/usuarios.type';
 
 
 export const optenerUsuarios = () => {
     
     return async (dispatch: Function) => {
         dispatch(loaddingOn());
-        dispatch({ type: 'REMOVE_USUARIOS' });
+        dispatch({ type: types.REMOVE_USUARIOS });
         try {
             const value = await getAllUsers();             
             dispatch(menssageOn({
@@ -15,7 +16,7 @@ export const optenerUsuarios = () => {
                 title: '',
                 type: 'info'
             }));
-            dispatch({ type: 'LISTA_USUARIOS', value });
+            dispatch({ type: types.LISTA_USUARIOS, value });
         } catch(error) {
             dispatch(menssageOn({
                 status: true,
@@ -45,7 +46,7 @@ export const usuarioId = (id='') => {
                     title: '',
                     type: 'info'
                 }));
-                dispatch({ type:'SELECTED_USER_ID', value });
+                dispatch({ type:types.SELECTED_USER_ID, value });
             } else {
                 dispatch(menssageOn({
                 status: true,
@@ -62,5 +63,27 @@ export const usuarioId = (id='') => {
             dispatch(menssageOff());
         },2000)
         dispatch(loaddingOff());
+    }
+}
+
+export const changeUserName = (value: string) => {
+    
+    return (dispatch:Function) => {
+        dispatch({type: types.USER_NAME, value});
+    }
+}
+export const changeLastName = (value: string) => {
+    return (dispatch:Function) => {
+        dispatch({type: types.USER_LAST_NAME, value});
+    }
+}
+export const changeEmail = (value: string) => {
+    return (dispatch:Function) => {
+        dispatch({type: types.USER_EMAIL, value});
+    }
+}
+export const changePuesto = (value: string) => {
+    return (dispatch:Function) => {
+        dispatch({type: types.USER_PUESTO, value});
     }
 }

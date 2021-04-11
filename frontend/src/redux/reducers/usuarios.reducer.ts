@@ -1,20 +1,12 @@
 import { actionDefault } from "../types/actionDefaut.type";
-
-export type userInitial = {
-    id:string,
-    create: string,
-    email: string,
-    name: string,
-    lastName: string,
-    puesto?:string,
-}
+import types,{ userInitial } from "../types/usuarios.type";
 
 
 export const usuarios = (state: userInitial[] = [], action: actionDefault) => {
     switch (action.type) {
-        case 'LISTA_USUARIOS':
+        case types.LISTA_USUARIOS:
             return action.value;
-        case 'REMOVE_USUARIOS':
+        case types.REMOVE_USUARIOS:
             return [];
         default:
             return state;

@@ -3,7 +3,7 @@ import { Button, Card, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { optenerUsuarios } from "../../redux/actions/usuarios.actions";
-import { userInitial } from "../../redux/reducers/usuarios";
+import { userInitial } from "../../redux/types/usuarios.type";
 
 
 const ListaUsuarios = () => {

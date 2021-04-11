@@ -1,4 +1,4 @@
-
+import types from '../types/usuarios.type';
 
 export const userSelected = (idUser:string) => {
     
@@ -7,7 +7,7 @@ export const userSelected = (idUser:string) => {
 export const defaultUserValues = () => {
     
     return (dispatch:Function) => {
-        dispatch({ type: 'DEFAULT_USER_ID' });
+        dispatch({ type: types.DEFAULT_USER_ID });
     }
 }
 
@@ -19,6 +19,6 @@ export const sendNewUsuario = ({
 }) => {
     return async (dispatch: Function) => {
         
-        dispatch({ type: 'DEFAULT_USER_ID' });
+        dispatch({ type: types.DEFAULT_USER_ID });
     }
 }

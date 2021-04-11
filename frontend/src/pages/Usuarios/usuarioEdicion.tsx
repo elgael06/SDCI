@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router"
 import Title from "../../components/Title"
 import { defaultUserValues } from "../../redux/actions/userSelect.actions"
-import { usuarioId } from "../../redux/actions/usuarios.actions"
-import { userInitial } from "../../redux/reducers/usuarios"
+import { changeUserName,changeLastName,changeEmail,changePuesto, usuarioId } from "../../redux/actions/usuarios.actions"
+import { userInitial } from "../../redux/types/usuarios.type"
 import FormLogin from "../Login/components/FormLogin"
 
 
@@ -61,7 +61,7 @@ const NuevoUsuario: React.FC = () => {
                         placeholder='Nombre(s)...'
                         // size="sm"
                         value={name}
-                        onChange={(e:any) => dispatch({type:'USER_NAME',value:e.target.value})}
+                        onChange={(e:any) => dispatch(changeUserName(e.target.value))}
                     />
                 </Col>
                 <Col sm={ancho_col}>
@@ -74,7 +74,7 @@ const NuevoUsuario: React.FC = () => {
                         placeholder='Apeidos...'
                         value={lastName}
                         // size="sm"
-                        onChange={(e:any) => dispatch({type:'USER_LAST_NAME',value: `${e.target.value}`})}
+                        onChange={(e:any) => dispatch(changeLastName(e.target.value))}
                     />
                 </Col>
 
@@ -88,7 +88,7 @@ const NuevoUsuario: React.FC = () => {
                         placeholder='usuario@dominio.abc'
                         value={email}
                         // size="sm"
-                        onChange={(e:any) => dispatch({type:'USER_EMAIL',value:e.target.value})}
+                        onChange={(e:any) => dispatch(changeEmail(e.target.value))}
                     />
                 </Col>
                 <Col sm={ancho_col}>
@@ -98,7 +98,7 @@ const NuevoUsuario: React.FC = () => {
                             as='select'
                             value={puesto}
                             required
-                            onChange={(e:any) => dispatch({ type: 'USER_PUESTO', value: e.target.value })}
+                            onChange={(e:any) => dispatch(changePuesto( e.target.value))}
                         >
                             <option value=''> -- </option>
                             <option>Administrador</option>

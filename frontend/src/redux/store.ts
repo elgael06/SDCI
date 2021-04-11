@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import { efectsInitialState, effects } from './reducers/effects.reducer';
 import { formGasto, initGasto } from './reducers/gasto';
 import { sesion, sesionInitialState } from './reducers/sesion.reducer';
-import { userInfo, userInfoInit } from './reducers/userInfo';
-import { usuarios } from './reducers/usuarios';
+import { userInfo, userInfoInit } from './reducers/userInfo.reducer';
+import { usuarios } from './reducers/usuarios.reducer';
 import { usurioSeleccionado,usuarioSelInit } from './reducers/usurioSeleccionado';
 
 const reducers = combineReducers({

@@ -3,6 +3,7 @@ import React from "react";
 import { Card, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modalOff } from "../../../redux/actions/effects.actions";
+import { addUserInfoFecha, addUserInfoTel } from "../../../redux/actions/userInfo.actions";
 import FormLogin from "./FormLogin";
 
 
@@ -60,7 +61,7 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
                             required
                             type='date'
                             value={feha_nac}
-                            onChange={(e:any)=>dispatch({type:'ADD_INFO_FECHA',value:e.target.value})}
+                            onChange={(e:any)=>dispatch(addUserInfoFecha(e.target.value))}
                         />
                     </Col>
                     <Col sm={6}>
@@ -71,7 +72,7 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
                             value={number_phone}
                             minLength='10'
                             maxLength='13'
-                            onChange={(e:any)=>dispatch({type:'ADD_INFO_TEL',value:e.target.value})}
+                            onChange={(e:any)=>dispatch(addUserInfoTel(e.target.value))}
                         />
                     </Col>
                     <Col xs={6}>
