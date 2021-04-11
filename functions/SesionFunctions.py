@@ -55,7 +55,6 @@ def loginSesion():
         if auth is not None and auth.username and auth.password:
             usuario = SesionDoc.objects(
                 email=auth.username,
-                status=True
             ).first()
 
             check_passw = check_password_hash(usuario.password, auth.password)
@@ -64,10 +63,11 @@ def loginSesion():
                 hash_passw = generate_password_hash(str(uuid.uuid4()))
                 usuario.token = hash_passw
                 usuario.save()
-                return {"status": True, 'token': hash_passw}
-        return {"status": False, 'token': None}
+                return {"status": True, 'token': hash_passw, 'active': usuario.status}
+        return {"status": False, 'token': None, 'active': False}
     except:
-        return {"status": False, 'token': None}
+        print('error')
+        return {"status": False, 'token': None, 'active': False}
 
 
 def cancelLogin(current_user, email=''):

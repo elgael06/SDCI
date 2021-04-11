@@ -9,7 +9,8 @@ export type messageInitial = {
 export type efectaInitial = {
     loadding: boolean,
     message: messageInitial,
-    toask :messageInitial
+    toask: messageInitial,
+    statusModal:boolean,
     
 }
 
@@ -27,13 +28,14 @@ export const efectsInitialState: efectaInitial = {
         title: '',
         type:'info'
     },
+    statusModal:false,
 }
 export type efActions = {
     type: string,
     value:any
 }
 
-export const effects = (state=efectsInitialState,actions:efActions):efectaInitial => {
+export const effects = (state=efectsInitialState,actions:efActions) => {
     
     switch (actions.type) {
         case 'ON_LOADDING':
@@ -47,7 +49,11 @@ export const effects = (state=efectsInitialState,actions:efActions):efectaInitia
         case 'ON_TOASK':
             return { ...state, toask: actions.value };
         case 'OFF_TOASK':
-            return { ...state, toask: efectsInitialState.message };
+            return { ...state, toask: actions.value };
+        case 'ON_MODAL':
+            return { ...state, statusModal: true };
+        case 'OFF_MODAL':
+            return { ...state, statusModal: false };
         default:
             return state;
     }

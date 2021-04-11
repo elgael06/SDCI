@@ -14,8 +14,12 @@ export const chekSesion = ({ email='',password=''}) => {
             type: data.status ? 'info' : 'danger'
         }));
         setTimeout(()=>dispatch(menssageOff()),2000);
-        if (data.status) {
-            dispatch({ type: 'ADD_SESION', value: { ...data.sesion, status: data.status, token:data.token } });
+        if (data.status && data.active) {
+            dispatch({ type: 'ADD_SESION', value: { ...data.sesion, status: data.status, token: data.token } });
+        } else if (data.status && !data.active) {
+            console.log('modal para activacion usuario...',data.info);
+            dispatch({ type: 'ADD_INFO_USER_SESION', value: data.info });
+            dispatch({ type: 'ON_MODAL' });
         }
     }
 }

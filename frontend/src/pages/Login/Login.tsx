@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { chekSesion } from "../../redux/actions/sesion.actions";
 import LayoutLogin from "../../components/Layout/LayoutLogin";
 import FormLogin from "./components/FormLogin";
+import ModalConfirm from "./components/ModalConfirm";
 
 type formType = {
     email: string,
@@ -69,6 +70,7 @@ const Login = () => {
             </IonButton>
 
         </Form>
+        <ModalConfirm email={state.email} />
     </LayoutLogin>
 }
 

@@ -60,6 +60,13 @@ def userInsert(name, lastName, email, userCreate):
         return None
 
 
+def checkDatosUser(id=''):
+    datos = UserDataConfirm.objects(userId=id).first()
+    if datos is not None:
+        return datos.parseJson()
+    return {}
+
+
 def userConfirm(id='', phone='', date='', puesto='', password='', nPassword=''):
     try:
         user = userId(id)
