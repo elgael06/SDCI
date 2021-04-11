@@ -1,11 +1,12 @@
-import { IonButton, IonModal } from "@ionic/react";
-import { Button, Card, Col, Form, Modal, Row } from "react-bootstrap";
+import { IonButton } from "@ionic/react";
+import React from "react";
+import { Card, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modalOff } from "../../../redux/actions/effects.actions";
 import FormLogin from "./FormLogin";
 
 
-const ModalConfirm = ({ email='',password='' }) => {
+const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',password='' }) => {
 
     const {feha_nac='',number_phone='',puesto=''} = useSelector((state: any) => state.userInfo);
     const { statusModal = false } = useSelector((state: any) => state.effects);
@@ -25,8 +26,6 @@ const ModalConfirm = ({ email='',password='' }) => {
 
     return <Modal
         show={statusModal}
-        swipeToClose={false}
-        backdropDismiss={false}
         backdrop="static"
         onHide={() => dispatch(modalOff())}
         animation={true}
