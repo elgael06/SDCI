@@ -1,6 +1,7 @@
 import { IonButton, IonModal } from "@ionic/react";
 import { Button, Card, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { modalOff } from "../../../redux/actions/effects.actions";
 import FormLogin from "./FormLogin";
 
 
@@ -27,7 +28,7 @@ const ModalConfirm = ({ email='',password='' }) => {
         swipeToClose={false}
         backdropDismiss={false}
         backdrop="static"
-        onHide={() => dispatch({ type: 'OFF_MODAL' })}
+        onHide={() => dispatch(modalOff())}
         animation={true}
     >
         <Modal.Header closeButton>
@@ -76,7 +77,7 @@ const ModalConfirm = ({ email='',password='' }) => {
                     </Col>
                     <Col xs={6}>
                         <IonButton
-                            onClick={() => dispatch({ type: 'OFF_MODAL' })}
+                            onClick={() => dispatch(modalOff())}
                             expand='block'
                             color='light'
                             fill='solid' type='reset' >CANCELAR</IonButton>

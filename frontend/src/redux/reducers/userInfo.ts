@@ -1,3 +1,4 @@
+import { actionDefault } from "../types/actionDefaut.type";
 
 
 export type userInfoInitType = {
@@ -17,7 +18,7 @@ export const userInfoInit: userInfoInitType = {
 }
 
 
-export const userInfo = (state:userInfoInitType = userInfoInit, actions :{type:string,value:any}) => {
+export const userInfo = (state:userInfoInitType = userInfoInit, actions :actionDefault) => {
     switch (actions.type) {
         case 'ADD_INFO_USER_SESION': return actions.value;
         case 'ADD_INFO_TEL': return {...state, number_phone: actions.value};

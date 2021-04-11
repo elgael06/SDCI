@@ -1,3 +1,4 @@
+import { actionDefault } from "../types/actionDefaut.type";
 
 export type sesionStateType = {
     create  : string;
@@ -7,10 +8,6 @@ export type sesionStateType = {
     name    : string;
     token   : string;
     status  : boolean;
-};
-export type actionType = {
-    type    : string,
-    value   : sesionStateType,
 };
 
 export const sesionInitialState:sesionStateType ={
@@ -23,7 +20,7 @@ export const sesionInitialState:sesionStateType ={
     status:false
 } 
 
-export const sesion = (state = sesionInitialState, actions: actionType) => {
+export const sesion = (state = sesionInitialState, actions: actionDefault) => {
     
     switch (actions.type) {
         case 'ADD_SESION':

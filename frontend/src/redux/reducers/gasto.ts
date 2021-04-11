@@ -1,9 +1,5 @@
+import { actionDefault } from "../types/actionDefaut.type";
 
-
-export type actionType = {
-    type: string,
-    value: any,
-};
 export type gastoLista = {
     id: string,
     text:string
@@ -23,7 +19,7 @@ export const initGasto:stateGasto = {
     lista:[]
 };
 
-export const formGasto = (state=initGasto, action:actionType):stateGasto => { 
+export const formGasto = (state=initGasto, action:actionDefault) => { 
 
     switch (action.type) { 
         case 'addTipo' : return { ...state, tipo: action.value };

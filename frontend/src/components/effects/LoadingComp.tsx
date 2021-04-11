@@ -2,7 +2,7 @@ import React from "react";
 import { IonLoading } from "@ionic/react";
 import { useDispatch, useSelector } from "react-redux";
 import { loaddingOff } from "../../redux/actions/effects.actions";
-import { efectaInitial } from "../../redux/reducers/effects";
+import { efectaInitial } from "../../redux/types/effects.type";
 
 
 const LoadingComp = () => {

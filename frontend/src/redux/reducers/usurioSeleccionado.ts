@@ -1,3 +1,4 @@
+import { actionDefault } from "../types/actionDefaut.type";
 import { userInitial } from "./usuarios";
 
 export const usuarioSelInit: userInitial = {
@@ -8,12 +9,9 @@ export const usuarioSelInit: userInitial = {
     create: '',
     puesto:''
 }
-export type selectedAction = {
-    type: string,
-    value:any
-}
 
-export const usurioSeleccionado = (state=usuarioSelInit, actions:selectedAction):userInitial => {
+
+export const usurioSeleccionado = (state=usuarioSelInit, actions:actionDefault):userInitial => {
     
     switch (actions.type) {
         case 'SELECTED_USER_ID':

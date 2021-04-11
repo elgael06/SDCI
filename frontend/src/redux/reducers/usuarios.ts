@@ -1,8 +1,5 @@
+import { actionDefault } from "../types/actionDefaut.type";
 
-export type usuarioAction = {
-    type: string,
-    value:userInitial[]
-}
 export type userInitial = {
     id:string,
     create: string,
@@ -13,7 +10,7 @@ export type userInitial = {
 }
 
 
-export const usuarios = (state: userInitial[] = [], action: usuarioAction) => {
+export const usuarios = (state: userInitial[] = [], action: actionDefault) => {
     switch (action.type) {
         case 'LISTA_USUARIOS':
             return action.value;

@@ -1,5 +1,5 @@
 import { login } from "../../api/login";
-import { loaddingOff, loaddingOn, menssageOff, menssageOn } from "./effects.actions"
+import { loaddingOff, loaddingOn, menssageOff, menssageOn, modalOn } from "./effects.actions"
 
 
 export const chekSesion = ({ email='',password=''}) => {
@@ -19,7 +19,7 @@ export const chekSesion = ({ email='',password=''}) => {
         } else if (data.status && !data.active) {
             console.log('modal para activacion usuario...',data.info);
             dispatch({ type: 'ADD_INFO_USER_SESION', value: data.info });
-            dispatch({ type: 'ON_MODAL' });
+            dispatch(modalOn());
         }
     }
 }

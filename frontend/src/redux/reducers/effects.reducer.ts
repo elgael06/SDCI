@@ -1,18 +1,5 @@
-
-export type messageInitial = {
-    title: string,
-    text: string,
-    status: boolean,
-    type:'danger'| 'info'
-}
-
-export type efectaInitial = {
-    loadding: boolean,
-    message: messageInitial,
-    toask: messageInitial,
-    statusModal:boolean,
-    
-}
+import { actionDefault } from "../types/actionDefaut.type";
+import types,{ efectaInitial } from "../types/effects.type";
 
 export const efectsInitialState: efectaInitial = {
     loadding: false,
@@ -30,29 +17,24 @@ export const efectsInitialState: efectaInitial = {
     },
     statusModal:false,
 }
-export type efActions = {
-    type: string,
-    value:any
-}
-
-export const effects = (state=efectsInitialState,actions:efActions) => {
+export const effects = (state=efectsInitialState,actions:actionDefault):efectaInitial => {
     
     switch (actions.type) {
-        case 'ON_LOADDING':
+        case types.ON_LOADDING:
             return { ...state, loadding: true };
-        case 'OFF_LOADDING':
+        case types.OFF_LOADDING:
             return { ...state, loadding: false };
-        case 'ON_MESSAGE':
+        case types.ON_MESSAGE:
             return { ...state, message: actions.value };
-        case 'OFF_MESSAGE':
+        case types.OFF_MESSAGE:
             return { ...state, message: efectsInitialState.message };
-        case 'ON_TOASK':
+        case types.ON_TOASK:
             return { ...state, toask: actions.value };
-        case 'OFF_TOASK':
+        case types.OFF_TOASK:
             return { ...state, toask: actions.value };
-        case 'ON_MODAL':
+        case types.ON_MODAL:
             return { ...state, statusModal: true };
-        case 'OFF_MODAL':
+        case types.OFF_MODAL:
             return { ...state, statusModal: false };
         default:
             return state;

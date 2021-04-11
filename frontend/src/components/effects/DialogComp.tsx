@@ -1,6 +1,6 @@
 import { Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { efectaInitial } from "../../redux/reducers/effects";
+import { efectaInitial } from "../../redux/types/effects.type";
 
 
 const DialogComp = () => {
