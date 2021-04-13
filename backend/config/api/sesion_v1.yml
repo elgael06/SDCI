@@ -14,7 +14,7 @@ basePath: "/api/v1/sesion"
 paths:
   /login:
     post:
-      operationId: controllers.sesion.check
+      operationId: backend.controllers.sesion.check
       tags:
         - "sesion"
       parameters:
@@ -34,7 +34,7 @@ paths:
 
   /update_password:
     post:
-      operationId: controllers.sesion.update
+      operationId: backend.controllers.sesion.update
       tags:
         - password
       parameters:

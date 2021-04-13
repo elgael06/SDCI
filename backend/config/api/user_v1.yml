@@ -14,7 +14,7 @@ basePath: "/api/v1/user"
 paths:
   /:
     get:
-      operationId: "controllers.user.read"
+      operationId: backend.controllers.user.read
       tags:
         - "Users"
       parameters:
@@ -30,7 +30,7 @@ paths:
           schema:
             type: "string"
     post:
-      operationId: controllers.user.create
+      operationId: backend.controllers.user.create
       tags:
         - "Create"
       description: "create a user"
@@ -52,7 +52,7 @@ paths:
           description: Successfully created user in list
   /{id}:
     get:
-      operationId: controllers.user.getOne
+      operationId: backend.controllers.user.getOne
       tags:
         - user id
       parameters:
@@ -65,7 +65,7 @@ paths:
           description: Successfully get user id
   /confirm:
     post:
-      operationId: controllers.user.confirm
+      operationId: backend.controllers.user.confirm
       tags:
         - confirmar usuario
       description: confirma datos de usuario

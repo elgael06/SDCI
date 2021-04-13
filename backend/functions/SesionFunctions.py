@@ -1,9 +1,9 @@
 
-from models.SesionDoc import SesionDoc, DEFAULT_PASSWORD
-from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 import uuid
 from connexion import request
+from werkzeug.security import generate_password_hash, check_password_hash
+from backend.models.SesionDoc import SesionDoc, DEFAULT_PASSWORD
 
 
 def createSesion(email=''):

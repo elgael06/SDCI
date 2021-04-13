@@ -1,5 +1,5 @@
-from functions.SesionFunctions import updatePasswordSesion, loginSesion
-from functions.UserFunctions import userEmail, checkDatosUser
+from backend.functions.SesionFunctions import updatePasswordSesion, loginSesion
+from backend.functions.UserFunctions import userEmail, checkDatosUser
 
 
 def check(sesion):

@@ -1,8 +1,8 @@
 
 from functools import wraps
 from connexion import request
-from models.SesionDoc import SesionDoc
-from models.UserDoc import UserDoc
+from backend.models.SesionDoc import SesionDoc
+from backend.models.UserDoc import UserDoc
 
 
 def token_required(f):

@@ -1,6 +1,6 @@
 
-from functions.UserFunctions import userInsert, userId, getUser
-from functions.check_token import token_required
+from backend.functions.UserFunctions import userInsert, userId, getUser
+from backend.functions.check_token import token_required
 
 
 @token_required

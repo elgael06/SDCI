@@ -1,5 +1,5 @@
-from models.UserDoc import UserDoc, UserDataConfirm
-from functions.SesionFunctions import createSesion, updatePasswordSesion
+from backend.models.UserDoc import UserDoc, UserDataConfirm
+from backend.functions.SesionFunctions import createSesion, updatePasswordSesion
 
 
 def getUser(email=''):
