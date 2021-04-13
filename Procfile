@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT config.wsgi:app
+web: gunicorn --bind 0.0.0.0:$PORT backend.config.wsgi:app

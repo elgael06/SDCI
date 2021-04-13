@@ -1,5 +1,5 @@
 import connexion
-import config.database.mongo_bd
+import backend.config.database.mongo_bd
 from flask import render_template
 from flask_cors import CORS
 from flask import url_for
@@ -8,7 +8,7 @@ from flask import url_for
 # instancia de la app con la rutas de configuracion de las api.
 ##
 app = connexion.FlaskApp(
-    __name__, options={"swagger_ui": False}, specification_dir='./config/api/')
+    __name__, options={"swagger_ui": False}, specification_dir='./backend/config/api/')
 
 ###
 # se agregan las rutas al app
@@ -18,14 +18,10 @@ app.add_api('sesion_v1.yml')  # api v1 sesion
 CORS(app.app)  # activacion de cors
 
 
-@app.route('/')
-@app.route('/<page>/')
-@app.route('/<page>/<name>/')
-@app.route('/page/<name>/<modulo>/')
-@app.route('/page/<name>/<modulo>/<submodulo>/')
-@app.route('/page/<name>/<modulo>/<submodulo>/<id>/')
-def index(page=None, name=None, modulo=None, submodulo=None, id=None):
-    print(name)
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
+    print(path)
     return render_template('index.html')
 
 

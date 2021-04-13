@@ -10,14 +10,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store} >
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store} >
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 defineCustomElements(window);
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register();
 
 reportWebVitals();
