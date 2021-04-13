@@ -103,7 +103,7 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
                     <Col xs={6}>
                         <IonButton 
                             expand='block' 
-                            color='secondary'
+                            color='dark'
                             fill='solid' 
                             type='submit' >GUARDAR</IonButton>
                     </Col>
