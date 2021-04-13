@@ -9,10 +9,9 @@ def check(sesion):
     if comp['user'] is not None:
         resp = loginSesion()
         datos = checkDatosUser(comp['user']['id'])
-        print(resp)
         if resp['status'] and resp['active']:
             return {
-                'status': True,
+                'status': resp['status'],
                 'sesion': comp['user'],
                 'token': resp['token'],
                 'message': 'sesion iniciada!',
@@ -21,7 +20,7 @@ def check(sesion):
             }
         elif not resp['active']:
             return {
-                'status': True,
+                'status': resp['status'],
                 'active': resp['active'],
                 'message': 'Sesion desactivada!!!',
                 'active': resp['active'],
@@ -29,7 +28,7 @@ def check(sesion):
             }
         elif email:
             return {
-                'status': False,
+                'status': resp['status'],
                 'sesion': None,
                 'message': 'Error en la contraseña!',
                 'active': resp['active'],

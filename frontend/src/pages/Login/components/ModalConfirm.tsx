@@ -56,6 +56,24 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
                         />
                     </Col>
                     <Col sm={6}>
+                        <FormLogin                      
+                            title='Contraseña actual'
+                            required
+                            type='password'
+                            
+                            // value={puesto}
+                        />
+                    </Col>
+                    <Col sm={6}>
+                        <FormLogin                      
+                            title='Nueva contraseña'
+                            required
+                            minLength='10'
+                            type='password'
+                            // value={puesto}
+                        />
+                    </Col>
+                    <Col sm={6}>
                         <FormLogin                    
                             title='Fecha nacimiento'
                             required
@@ -85,7 +103,7 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
                     <Col xs={6}>
                         <IonButton 
                             expand='block' 
-                            color='secondary' 
+                            color='secondary'
                             fill='solid' 
                             type='submit' >GUARDAR</IonButton>
                     </Col>
