@@ -76,13 +76,11 @@ paths:
           schema:
             type: object
             properties:
-              id:
+              email:
                 type: string
               phone:
                 type: string
               date:
-                type: string
-              puesto:
                 type: string
               password:
                 type: string

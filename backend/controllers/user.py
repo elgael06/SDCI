@@ -1,5 +1,5 @@
 
-from backend.functions.UserFunctions import userInsert, userId, getUser
+from backend.functions.UserFunctions import userInsert, userId, getUser, userConfirm
 from backend.functions.check_token import token_required
 
 

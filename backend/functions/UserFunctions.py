@@ -71,21 +71,26 @@ def userConfirm(email='', phone='', date='', password='', nPassword=''):
     try:
         user = userEmail(email)
         if user['user'] is not None:
-            datos = UserDataConfirm(
-                userId=user['user']['id'],
-                number_phone=phone,
-                fecha_nac=date,
-                status=True
-            )
+            print('id ', user['user']['id'])
+            datos = UserDataConfirm.objects(
+                userId=user['user']['id']
+            ).first()
+            datos.number_phone = phone
+            datos.fecha_nac = date
+            datos.status = True
             datos.save()
+            print(datos.id)
+
             changePassword = updatePasswordSesion(
                 email=email,
                 password=password,
                 nPassword=nPassword
             )
+            print('estatus password: ', changePassword)
             if changePassword:
                 return {'messaje': 'Usuario actualizado correctamente...', 'status': True}
             return {'messaje': 'Error en contraseña de usuario!', 'status': False}
-        return {'messaje': 'Error id :{id} , no encontrado!'.format(id=id), 'status': False}
+        return {'messaje': 'Error emal :{id} , no encontrado!'.format(id=email), 'status': False}
     except:
+        print('error en cambio de contraseña')
         return {'messaje': 'Error al confirmar datos de usuario!', 'status': False}

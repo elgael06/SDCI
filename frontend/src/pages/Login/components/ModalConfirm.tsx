@@ -1,9 +1,9 @@
 import { IonButton } from "@ionic/react";
-import React from "react";
+import React, { useState } from "react";
 import { Card, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { modalOff } from "../../../redux/actions/effects.actions";
-import { addUserInfoFecha, addUserInfoTel } from "../../../redux/actions/userInfo.actions";
+import { addUserInfoFecha, addUserInfoTel, sendConfirmInfo } from "../../../redux/actions/userInfo.actions";
 import FormLogin from "./FormLogin";
 
 
@@ -12,6 +12,10 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
     const {feha_nac='',number_phone='',puesto=''} = useSelector((state: any) => state.userInfo);
     const { statusModal = false } = useSelector((state: any) => state.effects);
     const dispatch = useDispatch();
+    const [password_conf, setPassword] = useState<{old:string,new:string}>({
+        old: password,
+        new:''
+    });
     
 
     const submitInfo = (e: any) => {
@@ -22,7 +26,15 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
             feha_nac,
             number_phone,
             puesto,
+            password_conf
         });
+        dispatch(sendConfirmInfo({
+            email,
+            date: feha_nac,
+            phone: number_phone,
+            password: password_conf.old,
+            nPassword:password_conf.new,
+        }));
     }
 
     return <Modal
@@ -59,18 +71,19 @@ const ModalConfirm: React.FC<{email:string,password:string}> = ({ email='',passw
                         <FormLogin                      
                             title='Contraseña actual'
                             required
-                            type='password'
-                            
-                            // value={puesto}
+                            type='password'          
+                            onChange={(e:any)=>setPassword({...password_conf, old:e.target.value})}              
+                            value={password_conf.old}
                         />
                     </Col>
                     <Col sm={6}>
                         <FormLogin                      
                             title='Nueva contraseña'
                             required
-                            minLength='10'
+                            minLength='8'
                             type='password'
-                            // value={puesto}
+                            onChange={(e:any)=>setPassword({...password_conf, new:e.target.value})}
+                            value={password_conf.new}
                         />
                     </Col>
                     <Col sm={6}>

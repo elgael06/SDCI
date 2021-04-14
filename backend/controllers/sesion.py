@@ -15,15 +15,14 @@ def check(sesion):
                 'sesion': comp['user'],
                 'token': resp['token'],
                 'message': 'sesion iniciada!',
-                'active': resp['active'],
+                'active': datos['status'],
                 'info': datos
             }
-        elif not resp['active']:
+        elif not datos['status']:
             return {
                 'status': resp['status'],
-                'active': resp['active'],
+                'active': datos['status'],
                 'message': 'Sesion desactivada!!!',
-                'active': resp['active'],
                 'info': datos
             }
         elif email:
@@ -31,7 +30,7 @@ def check(sesion):
                 'status': resp['status'],
                 'sesion': None,
                 'message': 'Error en la contraseña!',
-                'active': resp['active'],
+                'active': datos['status'],
                 'info': datos
             }
     return {

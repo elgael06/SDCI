@@ -24,3 +24,23 @@ export const login = async (username = '', password = '') => {
         }
     }
 }
+
+export const sendConfirmInfoLogin = async (datos: {
+    email: string,
+    phone: string,
+    date: string,
+    password: string,
+    nPassword:string
+}) => {
+    
+    const url = '/api/v1/user/confirm';
+    const error = { messaje: 'Error en la respuesta! ', status: false };
+    try {
+        const { data, status } = await axios.post(url, datos);
+        return status == 200 ? { ...data } : error;
+    } catch (err) {
+        error.messaje += err.toString();
+        console.log(err);
+        return error;
+    }
+}
