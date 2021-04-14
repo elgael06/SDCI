@@ -47,6 +47,8 @@ paths:
                 type: string
               email:
                 type: string
+              puesto:
+                type: string
       responses:
         201:
           description: Successfully created user in list
@@ -60,9 +62,35 @@ paths:
           in: path
           type: string
           required: True
+        - name: user
+          in: body
+          required: True
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              lastname:
+                type: string
+              email:
+                type: string
+              puesto:
+                type: string
       responses:
         201:
           description: Successfully get user id
+    post:
+      operationId: backend.controllers.user.update
+      tags:
+        - update user id
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: True
+      responses:
+        201:
+          description: Successfully update user id
   /confirm:
     post:
       operationId: backend.controllers.user.confirm

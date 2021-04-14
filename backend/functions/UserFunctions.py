@@ -42,7 +42,12 @@ def userId(id):
     return {"user": None, 'data': None, }, 401
 
 
-def userInsert(name, lastName, email, userCreate):
+def userInsert(name, lastName, email, puesto, userCreate):
+    respuesta = {
+        'status': False,
+        'message': 'Error al guardar los datos de sesion!!!'
+    }
+
     try:
         usr = UserDoc(
             name=name,
@@ -53,11 +58,21 @@ def userInsert(name, lastName, email, userCreate):
         usr.save()
         sesion = createSesion(email=email)
         if sesion:
-            return usr.parseJson()
-        return None
+            createUserData(puesto=puesto, id=usr.id)
+            respuesta['status'] = True
+            respuesta['message'] = 'El usuario fue guardado: id {id}...'.format(
+                id=usr.id)
     except:
         print('error...')
-        return None
+        respuesta['message'] = 'Error al guardar los datos de usuario!!!'
+    return respuesta
+
+
+def createUserData(puesto='', id=''):
+    info = UserDataConfirm()
+    info.userId = id
+    info.puesto = puesto
+    info.save()
 
 
 def checkDatosUser(id=''):

@@ -1,17 +1,18 @@
-import { useEffect } from "react"
-import { Button, Col, Container, Form, Row } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router"
-import Title from "../../components/Title"
-import { defaultUserValues } from "../../redux/actions/userSelect.actions"
-import { changeUserName,changeLastName,changeEmail,changePuesto, usuarioId } from "../../redux/actions/usuarios.actions"
-import { userInitial } from "../../redux/types/usuarios.type"
-import FormLogin from "../Login/components/FormLogin"
+import { useEffect } from "react";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router";
+import Title from "../../components/Title";
+import { defaultUserValues } from "../../redux/actions/userSelect.actions";
+import { changeUserName, changeLastName, changeEmail, changePuesto, usuarioId, actualizarUsuario, guardarUsuario } from "../../redux/actions/usuarios.actions";
+import { userInitial } from "../../redux/types/usuarios.type";
+import FormLogin from "../Login/components/FormLogin";
 
 
 const ancho_col = '6'
 const NuevoUsuario: React.FC = () => {
-    const {idUser} = useParams<{idUser:string}>();
+    const { idUser } = useParams<{ idUser: string }>();
+    const history = useHistory();
     // const { token='NA' } = useSelector((state: any) => state.sesion);
     const {
         id= '',
@@ -43,6 +44,13 @@ const NuevoUsuario: React.FC = () => {
         email,
         puesto
         );
+        const resp = {
+            name,
+            lastname:lastName,
+            email,
+            puesto
+        }
+        dispatch(idUser ? actualizarUsuario(idUser, resp,history.goBack) : guardarUsuario(resp,history.goBack));
     }
 
     return <Container>

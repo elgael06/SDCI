@@ -1,6 +1,7 @@
-import { getAllUsers, getAUserId } from "../../api/users.api"
+import { getAllUsers, getAUserId, insertUser, updatetUser } from "../../api/users.api"
 import { loaddingOff, loaddingOn, menssageOff, menssageOn } from "./effects.actions";
 import types from '../types/usuarios.type';
+import userInitial from "../../interface/userInitial.interface";
 
 
 export const optenerUsuarios = () => {
@@ -85,5 +86,50 @@ export const changeEmail = (value: string) => {
 export const changePuesto = (value: string) => {
     return (dispatch:Function) => {
         dispatch({type: types.USER_PUESTO, value});
+    }
+}
+
+// GUARDAR
+export const guardarUsuario = (user:userInitial,callBack:Function) => {
+    return async (dispatch: Function) => {
+        dispatch(loaddingOn());
+        const data = await insertUser(user);
+
+        dispatch(menssageOn({
+                    status: true,
+                    text: data.message,
+                    title: '',
+                    type:  data.status ? 'info': 'danger'
+                }));
+        if (data.status) {
+            dispatch({ type: types.DEFAULT_USER_ID });
+            callBack();
+        }
+        dispatch(loaddingOff());
+        setTimeout(() => {        
+            dispatch(menssageOff());
+        },2000)
+    }
+}
+// ACTUALIZAR
+export const actualizarUsuario = (id:string,user:userInitial,callBack:Function) => {
+    return async (dispatch: Function) => {
+        dispatch(loaddingOn());
+        const data = await updatetUser(id,user);
+
+        dispatch(menssageOn({
+                    status: true,
+                    text: data.message,
+                    title: '',
+                    type:  data.status ? 'info': 'danger'
+                }));
+        if (data.status) {
+            dispatch({ type: types.DEFAULT_USER_ID });
+            callBack();
+        }
+        dispatch(loaddingOff());
+        setTimeout(() => {        
+            dispatch(menssageOff());
+        },2000)
     }
 }

@@ -1,4 +1,4 @@
-import { sendConfirmInfoLogin } from '../../api/login';
+import { sendConfirmInfoLogin } from '../../api/login.api';
 import types, { userInfoInitType } from '../types/userInfo.type';
 import { loaddingOff, loaddingOn, menssageOff, menssageOn, modalOff } from './effects.actions';
 
