@@ -116,8 +116,10 @@ const NuevoUsuario: React.FC = () => {
                         </Form.Control>
                     </Form.Group>
                 </Col>
-                <Col sm={ancho_col}></Col>
-                <Col sm={ancho_col} style={{display:'flex',flexDirection:'column-reverse',justifyContent:'center'}}>
+                <Col xs={ancho_col}>
+                    <Button  variant='light' block onClick={history.goBack} type='reset'> cancelar</Button>
+                </Col>
+                <Col xs={ancho_col}>
                     <Button block type='submit'> {idUser?'ACTUALIZAR':'GUARDAR'}</Button>
                 </Col>
             </Row>

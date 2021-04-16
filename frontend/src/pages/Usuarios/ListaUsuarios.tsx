@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Button, Card, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { optenerUsuarios } from "../../redux/actions/usuarios.actions";
 import { userInitial } from "../../redux/types/usuarios.type";
 
@@ -17,7 +18,6 @@ const ListaUsuarios = () => {
     }, []);
     
     const handleNew = () => history.push('/page/Usuarios/nuevo');
-    const handleEdit = (id:string) => history.push(`/page/Usuarios/Edit/${id}`);
     
     return (<Table bordered striped hover size="sm" responsive>
         <thead>
@@ -35,7 +35,14 @@ const ListaUsuarios = () => {
                 <td>{value.lastName}</td>
                 <td>{value.email}</td>
                 <td>{value.create.slice(0,10)} {value.create.slice(11,16)}</td>
-                <td><Button variant="link" onClick={()=>handleEdit(value.id)} size="sm">EDITAR</Button> </td>
+                <td>
+                    <Link to={`Edit/${value.id}`}>
+                    <Button
+                        variant="link"
+                        size="sm"
+                        >EDITAR</Button>
+                    </Link>
+                </td>
             </tr>)
                 : <tr>
                         <td colSpan={6} >
