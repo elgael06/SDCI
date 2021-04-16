@@ -9,7 +9,7 @@ import { userInitial } from "../../redux/types/usuarios.type";
 import FormLogin from "../Login/components/FormLogin";
 
 
-const ancho_col = '6'
+const ancho_col = '6';
 const NuevoUsuario: React.FC = () => {
     const { idUser } = useParams<{ idUser: string }>();
     const history = useHistory();
@@ -25,16 +25,9 @@ const NuevoUsuario: React.FC = () => {
 
     useEffect(() => {
         dispatch(defaultUserValues());
-        idUser && consultalUsuario();
+        idUser && dispatch(usuarioId(idUser));
         
     }, []);
-
-    const consultalUsuario = () => {
-        console.log('consultar...');
-        console.log('id: ', idUser);
-        dispatch(usuarioId(idUser));
-        
-    }
 
     const handleSave = (e: any) => {
         e.preventDefault();
@@ -50,7 +43,10 @@ const NuevoUsuario: React.FC = () => {
             email,
             puesto
         }
-        dispatch(idUser ? actualizarUsuario(idUser, resp,history.goBack) : guardarUsuario(resp,history.goBack));
+        dispatch(idUser ?
+            actualizarUsuario(idUser, resp, history.goBack) :
+            guardarUsuario(resp, history.goBack)
+        );
     }
 
     return <Container>
