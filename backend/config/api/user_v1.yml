@@ -62,20 +62,6 @@ paths:
           in: path
           type: string
           required: True
-        - name: user
-          in: body
-          required: True
-          schema:
-            type: object
-            properties:
-              name:
-                type: string
-              lastname:
-                type: string
-              email:
-                type: string
-              puesto:
-                type: string
       responses:
         201:
           description: Successfully get user id
