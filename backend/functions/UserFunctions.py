@@ -42,7 +42,7 @@ def userId(id):
     return {"user": None, 'data': None, }, 401
 
 
-def userInsert(name, lastName, email, puesto, userCreate):
+def userInsert(name, lastName, email, puesto, userCreate=''):
     respuesta = {
         'status': False,
         'message': 'Error al guardar los datos de sesion!!!'

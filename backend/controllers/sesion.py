@@ -31,14 +31,14 @@ def check(sesion):
                 'sesion': None,
                 'message': 'Error en la contraseña!',
                 'active': datos['status'],
-                'info': datos
+                'info': None
             }
     return {
         'status': False,
         'sesion': None,
         'message': 'Error: El email {email}  no existe!'.format(email=email),
         'active': False,
-        'info': datos
+        'info': None
     }
 
 

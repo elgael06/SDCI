@@ -7,6 +7,9 @@
   "dependencies": {
     "@babel/core": "7.12.3",
     "@capacitor/core": "2.4.6",
+    "@ionic-native/barcode-scanner": "^5.32.1",
+    "@ionic-native/camera": "^5.32.1",
+    "@ionic-native/core": "^5.32.1",
     "@ionic/pwa-elements": "^3.0.2",
     "@ionic/react": "^5.5.0",
     "@ionic/react-router": "^5.5.0",
@@ -29,6 +32,7 @@
     "babel-loader": "8.1.0",
     "babel-plugin-named-asset-import": "^0.3.7",
     "babel-preset-react-app": "^10.0.0",
+    "barcode-react-scanner": "^1.2.0",
     "bfj": "^7.0.2",
     "bootstrap": "^4.6.0",
     "camelcase": "^6.1.0",
@@ -50,6 +54,7 @@
     "fs-extra": "^9.0.1",
     "html-webpack-plugin": "4.5.0",
     "identity-obj-proxy": "3.0.0",
+    "ionic": "^5.4.16",
     "ionicons": "^5.4.0",
     "jest": "26.6.0",
     "jest-circus": "26.6.0",
@@ -57,6 +62,7 @@
     "jest-watch-typeahead": "0.6.1",
     "mini-css-extract-plugin": "0.11.3",
     "optimize-css-assets-webpack-plugin": "5.0.4",
+    "phonegap-plugin-barcodescanner": "^8.1.0",
     "pnp-webpack-plugin": "1.6.4",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-loader": "3.0.0",
@@ -66,6 +72,7 @@
     "prompts": "2.4.0",
     "react": "^17.0.1",
     "react-app-polyfill": "^2.0.0",
+    "react-barcode-reader": "0.0.2",
     "react-bootstrap": "^1.5.2",
     "react-dev-utils": "^11.0.2",
     "react-dom": "^17.0.1",
@@ -127,7 +134,8 @@
   },
   "devDependencies": {
     "@capacitor/cli": "2.4.6",
-    "@types/react-redux": "^7.1.16"
+    "@types/react-redux": "^7.1.16",
+    "react-scripts": "4.0.3"
   },
   "description": "An Ionic project",
   "proxy": "http://localhost:8000",

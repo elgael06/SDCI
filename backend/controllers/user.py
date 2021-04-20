@@ -14,11 +14,14 @@ def getOne(current_user, id):
 
 
 @token_required
-def create(current_user, user):
+def create(user):
     name = user.get('name', None)
     lasName = user.get('lastname', None)
     email = user.get('email', None)
     puesto = user.get('puesto', None)
+
+    if current_user is None:
+        current_user = 'ADMIN'
 
     if name and lasName and email and puesto:
         user = userInsert(

@@ -1,9 +1,15 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel, IonList, IonTitle } from "@ionic/react"
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel, IonList, IonTitle, isPlatform } from "@ionic/react"
 import Layout from "../../components/Layout/Layout"
 import data_app from '../../assets/data_app.json';
 import { menu } from "ionicons/icons";
+// import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+// import { Camera } from '@ionic-native/camera';
+import BarCodeScanner from 'barcode-react-scanner';
+// import * as BarcodeReader from 'react-barcode-reader';
 
-const Home: React.FC = () => { 
+import { useState } from "react";
+
+const Home = ():JSX.Element => { 
     
     return <Layout name='Inicio' > 
         <IonCard>
@@ -31,8 +37,29 @@ const Home: React.FC = () => {
                             <IonIcon slot='end' icon={menu} />
                         </IonItem>
                     )} */}
-                </IonList>
+        </IonList>
+        {/* <BarcodeReader
+
+        /> */}
+        {/* <TestingComponent /> */}
     </Layout>
-} 
+}
+
+const TestingComponent = (): JSX.Element => {
+const [code, setCode] = useState<string>('')
+
+    return (
+    <>
+    { code && <p> code </p> }
+    <BarCodeScanner onUpdate={ (err, resp): void => {
+        if(resp) {
+            setCode(resp.getText())
+        }
+    }}
+    />
+    </>
+);
+}
+
 
 export default Home;
