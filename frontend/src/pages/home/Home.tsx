@@ -8,9 +8,14 @@ import BarCodeScanner from 'barcode-react-scanner';
 // import * as BarcodeReader from 'react-barcode-reader';
 
 import { useState } from "react";
+import Scanner from "../../components/util/Scanner";
+
+const Barcode = require('react-barcode');
+
 
 const Home = ():JSX.Element => { 
     
+    const [code, setCode] = useState<string>('');
     return <Layout name='Inicio' > 
         <IonCard>
             <IonCardHeader>
@@ -42,6 +47,15 @@ const Home = ():JSX.Element => {
 
         /> */}
         {/* <TestingComponent /> */}
+        <Scanner
+            onDetected={
+                (result:any) => {
+                    console.log('result: ',result);
+                    setCode(result['code']);
+                }
+            }
+        />
+        <Barcode value={code} />
     </Layout>
 }
 
