@@ -15,7 +15,7 @@ const Barcode = require('react-barcode');
 
 const Home = ():JSX.Element => { 
     
-    const [code, setCode] = useState<string>('');
+    const [code, setCode] = useState<string>('code');
     return <Layout name='Inicio' > 
         <IonCard>
             <IonCardHeader>
