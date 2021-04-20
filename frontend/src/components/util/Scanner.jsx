@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Quagga from 'quagga'
+import Quagga from 'quagga';
+import BarcodeReader from 'react-barcode-reader';
 
 class Scanner extends Component {
   componentDidMount() {
@@ -8,10 +9,14 @@ class Scanner extends Component {
         inputStream: {
           type: 'LiveStream',
           constraints: {
-            width: 240,
-            height: 180,
+            width: 640,
+            height: 280,
             // facingMode: 'auto', // or user
           },
+        },
+        constraints: {
+          facingMode: "environment",
+          deviceId: "7832475934759384534"
         },
         // locator: {
         //   patchSize: 'medium',
@@ -21,6 +26,20 @@ class Scanner extends Component {
         decoder: {
           readers: ['code_128_reader'],
         },
+        area: { // defines rectangle of the detection/localization area
+          top: "0%",    // top offset
+          right: "0%",  // right offset
+          left: "0%",   // left offset
+          bottom: "0%"  // bottom offset
+        },
+        debug: {
+          drawBoundingBox: false,
+          showFrequency: false,
+          drawScanline: false,
+          showPattern: false
+      },
+      multiple: false,
+        singleChannel: false
         // locate: true,
       },
       function(err) {
@@ -42,7 +61,14 @@ class Scanner extends Component {
   }
 
   render() {
-    return <div id="interactive" className="viewport" />
+    return <>
+      <div id="interactive" className="viewport" />
+
+      <BarcodeReader
+        onError={err=>console.log(`err`, err)}
+        onScan={err=>alert(`code `, err)}
+      />
+      </>
   }
 }
 
