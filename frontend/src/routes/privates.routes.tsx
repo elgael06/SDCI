@@ -7,6 +7,7 @@ import RoutesDestinos from "../pages/Destinos/routes";
 import RoutesGastos from "../pages/Gastos/routes";
 import Home from "../pages/home/Home";
 import RoutesPlatillos from "../pages/Platillos/routes";
+import RoutesProductos from "../pages/productos/routes";
 import RoutesUsuarios from "../pages/Usuarios/routes";
 
 const PrivateRoutes = () => {
@@ -14,27 +15,24 @@ const PrivateRoutes = () => {
     return (<IonReactRouter>
     <IonSplitPane contentId="main">
       <Menu />
-      <IonRouterOutlet id="main">
-        <Switch >
-            
-                <Route path="/" exact={true}>
-                    <Redirect to="/page/Inicio" />
-                </Route>
-
-                <Route path="/page/login" exact={true}>
-                    <Redirect to="/page/Inicio" />
-                </Route>
-                <Route path="/page" exact={true}>
-                    <Redirect to="/page/Inicio" />
-                </Route>
-                <Route path="/page/Inicio" exact={true} component={Home} />
-                <Route path="/page/Platillos" component={RoutesPlatillos} />
-
-                <Route path="/page/Actividades" component={RoutesActividades} />
-                <Route path="/page/Destinos" component={RoutesDestinos} />
-                <Route path="/page/Gastos" component={RoutesGastos} />
-                <Route path='/page/Usuarios' component={RoutesUsuarios} />
-
+      <IonRouterOutlet id="main" animated={true} mode='md' >
+        <Switch >            
+          <Route path="/" exact={true}>
+              <Redirect to="/page/Inicio" />
+          </Route>
+          <Route path="/page/login" exact={true}>
+              <Redirect to="/page/Inicio" />
+          </Route>
+          <Route path="/page" exact={true}>
+              <Redirect to="/page/Inicio" />
+          </Route>
+          <Route path="/page/Inicio" exact={true} component={Home} />
+          <Route path="/page/Platillos" component={RoutesPlatillos} />
+          <Route path="/page/Actividades" component={RoutesActividades} />
+          <Route path="/page/Destinos" component={RoutesDestinos} />
+          <Route path="/page/Gastos" component={RoutesGastos} />
+          <Route path="/page/Productos" component={RoutesProductos} />
+          <Route path='/page/Usuarios' component={RoutesUsuarios} />
         </Switch>
       </IonRouterOutlet>
     </IonSplitPane>

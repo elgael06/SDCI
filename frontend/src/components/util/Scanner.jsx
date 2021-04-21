@@ -16,13 +16,13 @@ class Scanner extends Component {
         },
         constraints: {
           facingMode: "environment",
-          deviceId: "7832475934759384534"
+          // deviceId: "7832475934759384534"
         },
-        // locator: {
-        //   patchSize: 'medium',
-        //   halfSample: true,
-        // },
-        // numOfWorkers: 4,
+        locator: {
+          patchSize: 'medium',
+          halfSample: true,
+        },
+        numOfWorkers: 4,
         decoder: {
           readers: ['code_128_reader'],
         },
@@ -53,7 +53,8 @@ class Scanner extends Component {
   }
 
   componentWillUnmount() {
-    Quagga.offDetected(this._onDetected)
+    console.log('dismont scaner...')
+    Quagga.offDetected(this._onDetected);
   }
 
   _onDetected = result => {

@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { peopleCircle, peopleOutline, cardSharp, cardOutline, accessibility, accessibilityOutline,fastFood,navigateCircle, navigateOutline,homeSharp,homeOutline } from 'ionicons/icons';
+import { peopleCircle, peopleOutline, cardSharp, cardOutline, accessibility, accessibilityOutline,fastFood,navigateCircle, navigateOutline,homeSharp,homeOutline, caretUpCircleOutline, caretUpCircle } from 'ionicons/icons';
 import './Menu.css';
 import data_app from '../../assets/data_app.json';
 import { useSelector } from 'react-redux';
@@ -53,6 +53,12 @@ const appPages: AppPage[] = [
     url: '/page/Gastos',
     iosIcon: cardOutline,
     mdIcon: cardSharp
+  },
+  {
+    title: 'Productos',
+    url: '/page/Productos',
+    iosIcon: caretUpCircleOutline,
+    mdIcon: caretUpCircle
   },
   {
     title: 'Usuarios',
