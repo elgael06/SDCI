@@ -1,14 +1,20 @@
-import { IonAvatar, IonBadge, IonIcon, IonImg } from "@ionic/react";
+import { IonBadge, IonIcon, IonImg } from "@ionic/react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import FormLogin from "../Login/components/FormLogin";
 import foto from '../Gastos/assets/img/foto.png';
 import { barcode } from "ionicons/icons";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
 
 const Editar = () => {
+    const openScanner = async () => {
+        const data = await BarcodeScanner.scan();
+        console.log(`Barcode data: ${data.text}`);
+    };
     
     return (<>
         <h5>Editar Producto:</h5>
-
+        <Button onClick={openScanner}>Scanner</Button>
         <Container>
             <Row>
                 <Col sm={6}>
