@@ -26,43 +26,43 @@ interface AppPage {
 const appPages: AppPage[] = [
   {
     title: 'Inicio',
-    url: '/page/Inicio',
+    url: '/admin/Inicio',
     iosIcon: homeOutline,
     mdIcon: homeSharp
   },
   {
     title: 'Destinos',
-    url: '/page/Destinos',
+    url: '/admin/Destinos',
     iosIcon: navigateOutline,
     mdIcon: navigateCircle
   },
   {
     title: 'Platillos',
-    url: '/page/Platillos',
+    url: '/admin/Platillos',
     iosIcon: fastFood,
     mdIcon: fastFood
   },
   {
     title: 'Actividades',
-    url: '/page/Actividades',
+    url: '/admin/Actividades',
     iosIcon: accessibility,
     mdIcon: accessibilityOutline
   },
   {
     title: 'Gastos',
-    url: '/page/Gastos',
+    url: '/admin/Gastos',
     iosIcon: cardOutline,
     mdIcon: cardSharp
   },
   {
     title: 'Productos',
-    url: '/page/Productos',
+    url: '/admin/Productos',
     iosIcon: caretUpCircleOutline,
     mdIcon: caretUpCircle
   },
   {
     title: 'Usuarios',
-    url: '/page/Usuarios',
+    url: '/admin/Usuarios',
     iosIcon: peopleOutline ,
     mdIcon: peopleCircle
   },

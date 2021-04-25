@@ -9,10 +9,10 @@ const RoutesUsuarios: React.FC = () => {
 
     return <Layout name='Usuarios'>
             <Switch>
-            <Route path='/page/Usuarios/' exact={true} component={Usuarios} />
-            <Route path='/page/Usuarios/nuevo' exact component={usuarioEdicion} />
-            <Route path='/page/Usuarios/Edit/:idUser' exact component={usuarioEdicion} />
-            <Route path='/page/Usuarios/lista' exact component={ListaUsuarios} />
+            <Route path='/admin/Usuarios/' exact={true} component={Usuarios} />
+            <Route path='/admin/Usuarios/nuevo' exact component={usuarioEdicion} />
+            <Route path='/admin/Usuarios/Edit/:idUser' exact component={usuarioEdicion} />
+            <Route path='/admin/Usuarios/lista' exact component={ListaUsuarios} />
             </Switch>
         </Layout>
 }

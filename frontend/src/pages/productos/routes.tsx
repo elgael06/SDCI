@@ -10,14 +10,14 @@ const RoutesProductos = () => {
     
     return (<Layout name='Procudtos'>
         <Switch>
-            <Route path='/page/Productos' exact>
+            <Route path='/admin/Productos' exact>
                 <Title name='Menú' />
                 
                 <IonList className='lista-menus'>
                     {menus.map((m: any) => <SubMenu acceso={m} key={m.route} />)}
                 </IonList>
             </Route>
-            <Route path='/page/Productos/nuevo' exact component={Editar}/>
+            <Route path='/admin/Productos/nuevo' exact component={Editar}/>
         </Switch>
     </Layout>)
 }

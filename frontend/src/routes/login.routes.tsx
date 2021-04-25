@@ -6,9 +6,9 @@ import Login from "../pages/Login/Login";
 const LoginRoutes = () => {
     
     return (<IonReactRouter>
-        <Route path="/page/login" exact={true} component={Login} />
+        <Route path="/admin/login" exact={true} component={Login} />
         <Route path="/" >
-            <Redirect to="/page/login" />
+            <Redirect to="/admin/login" />
         </Route>
     </IonReactRouter>);
 }
