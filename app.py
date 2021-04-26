@@ -1,6 +1,6 @@
 import connexion
 import backend.config.database.mongo_bd
-from flask import render_template
+from flask import render_template, redirect
 from flask_cors import CORS
 from flask import url_for
 
@@ -18,11 +18,21 @@ app.add_api('sesion_v1.yml')  # api v1 sesion
 CORS(app.app)  # activacion de cors
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
+@app.route('/admin', defaults={'path': '/admin'})
+@app.route('/admin/<path:path>')
 def index(path):
     print(path)
     return render_template('index.html')
+
+
+@app.route('/static/')
+def staticos():
+    return redirect('/')
+
+
+@app.route('/')
+def landing():
+    return render_template('landing/index.html')
 
 
 if __name__ == "__main__":

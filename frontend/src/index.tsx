@@ -18,4 +18,4 @@ ReactDOM.render(
 defineCustomElements(window);
 serviceWorkerRegistration.register();
 
-reportWebVitals();
+// reportWebVitals();

@@ -1,11 +1,13 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel, IonList, IonTitle } from "@ionic/react"
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel, IonList, IonTitle } from "@ionic/react"
 import Layout from "../../components/Layout/Layout"
 import data_app from '../../assets/data_app.json';
-import { menu } from "ionicons/icons";
+import BarCodeScanner from 'barcode-react-scanner';
 
-const Home: React.FC = () => { 
-    
-    return <Layout name='Inicio' > 
+import { useState } from "react";
+
+
+const Home = ():JSX.Element => { 
+        return <Layout name='Inicio' > 
         <IonCard>
             <IonCardHeader>
                 <IonCardTitle>Datos aplicacion</IonCardTitle>
@@ -31,8 +33,40 @@ const Home: React.FC = () => {
                             <IonIcon slot='end' icon={menu} />
                         </IonItem>
                     )} */}
-                </IonList>
+        </IonList>
+        {/* <BarcodeReader
+
+        /> */}
+        {/* <TestingComponent /> */}
+        {/* <Barcode value={code} />
+        <Button onClick={()=>setMostrar(!mostrarScaner)} variant={mostrarScaner?'danger':'primary'}>{mostrarScaner ? 'Ocultar': 'Mostrar' } Scaner</Button>
+        <Barcode value='1016081' />
+        {mostrarScaner && <Scanner
+            onDetected={
+                (result: any) => {
+                    console.log('result: ', result.codeResult['code']);
+                    setCode(result.codeResult['code']);
+                }
+            }
+        />} */}
     </Layout>
-} 
+}
+
+const TestingComponent = (): JSX.Element => {
+const [code, setCode] = useState<string>('')
+
+    return (
+    <>
+    { code && <p> code </p> }
+    <BarCodeScanner onUpdate={ (err, resp): void => {
+        if(resp) {
+            setCode(resp.getText())
+        }
+    }}
+    />
+    </>
+);
+}
+
 
 export default Home;

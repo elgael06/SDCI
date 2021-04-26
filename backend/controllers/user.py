@@ -1,5 +1,5 @@
 
-from backend.functions.UserFunctions import userInsert, userId, getUser
+from backend.functions.UserFunctions import userInsert, userId, getUser, userConfirm
 from backend.functions.check_token import token_required
 
 
@@ -14,27 +14,37 @@ def getOne(current_user, id):
 
 
 @token_required
-def create(current_user, user):
+def create(user):
     name = user.get('name', None)
     lasName = user.get('lastname', None)
     email = user.get('email', None)
+    puesto = user.get('puesto', None)
 
-    if name and lasName and email:
+    if current_user is None:
+        current_user = 'ADMIN'
+
+    if name and lasName and email and puesto:
         user = userInsert(
             name=name,
             email=email,
             lastName=lasName,
+            puesto=puesto,
             userCreate=current_user
         )
-        status = False
-        message = 'user not save, check email!'
-        if user is not None:
-            print('ok')
-            status = True
-            message = 'user save!'
-        return {'status': status, 'mesage': message, 'user': user}
+        return user
     else:
-        return {'status': False, 'mesage': 'faltan parametros'}
+        return {'status': False, 'message': 'faltan parametros!!!'}
+
+
+@token_required
+def update(current_user, id, user):
+    name = user.get('name', None)
+    lasName = user.get('lastname', None)
+    email = user.get('email', None)
+    puesto = user.get('puesto', None)
+    print('actualizar {id}...'.format(id=id))
+
+    return {'message': 'Datos actualizado...', 'status': True}
 
 
 def confirm(data):

@@ -42,7 +42,12 @@ def userId(id):
     return {"user": None, 'data': None, }, 401
 
 
-def userInsert(name, lastName, email, userCreate):
+def userInsert(name, lastName, email, puesto, userCreate=''):
+    respuesta = {
+        'status': False,
+        'message': 'Error al guardar los datos de sesion!!!'
+    }
+
     try:
         usr = UserDoc(
             name=name,
@@ -53,11 +58,21 @@ def userInsert(name, lastName, email, userCreate):
         usr.save()
         sesion = createSesion(email=email)
         if sesion:
-            return usr.parseJson()
-        return None
+            createUserData(puesto=puesto, id=usr.id)
+            respuesta['status'] = True
+            respuesta['message'] = 'El usuario fue guardado: id {id}...'.format(
+                id=usr.id)
     except:
         print('error...')
-        return None
+        respuesta['message'] = 'Error al guardar los datos de usuario!!!'
+    return respuesta
+
+
+def createUserData(puesto='', id=''):
+    info = UserDataConfirm()
+    info.userId = id
+    info.puesto = puesto
+    info.save()
 
 
 def checkDatosUser(id=''):
@@ -71,21 +86,26 @@ def userConfirm(email='', phone='', date='', password='', nPassword=''):
     try:
         user = userEmail(email)
         if user['user'] is not None:
-            datos = UserDataConfirm(
-                userId=user['user']['id'],
-                number_phone=phone,
-                fecha_nac=date,
-                status=True
-            )
+            print('id ', user['user']['id'])
+            datos = UserDataConfirm.objects(
+                userId=user['user']['id']
+            ).first()
+            datos.number_phone = phone
+            datos.fecha_nac = date
+            datos.status = True
             datos.save()
+            print(datos.id)
+
             changePassword = updatePasswordSesion(
                 email=email,
                 password=password,
                 nPassword=nPassword
             )
+            print('estatus password: ', changePassword)
             if changePassword:
                 return {'messaje': 'Usuario actualizado correctamente...', 'status': True}
             return {'messaje': 'Error en contraseña de usuario!', 'status': False}
-        return {'messaje': 'Error id :{id} , no encontrado!'.format(id=id), 'status': False}
+        return {'messaje': 'Error emal :{id} , no encontrado!'.format(id=email), 'status': False}
     except:
+        print('error en cambio de contraseña')
         return {'messaje': 'Error al confirmar datos de usuario!', 'status': False}

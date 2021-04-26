@@ -65,6 +65,7 @@ const Login = () => {
             <IonButton
                 fill='solid'
                 type='submit'
+                color='dark'
                 expand='block' >
                 Entrar
             </IonButton>

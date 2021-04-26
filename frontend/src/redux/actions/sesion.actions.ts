@@ -1,4 +1,4 @@
-import { login } from "../../api/login";
+import { login } from "../../api/login.api";
 import { loaddingOff, loaddingOn, menssageOff, menssageOn, modalOn } from "./effects.actions";
 import types from '../types/sesion.type';
 import { addUserInfo } from "./userInfo.actions";

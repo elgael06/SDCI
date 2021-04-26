@@ -1,4 +1,7 @@
-import axios from "axios"
+import axios from "axios";
+import responseDefault from "../interface/responseDefault.interface";
+import userInitial from '../interface/userInitial.interface';
+
 
 export const getAllUsers = async () => {
     try {
@@ -9,6 +12,26 @@ export const getAllUsers = async () => {
         return []
     }
 }
+export const getUsersEmail = async (email='') => {
+    try {
+        const { data, status } = await axios.get(`/api/v1/user?email="${email}"`, );        
+        return status===200 ? data : null;
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
+
+export const insertUser = async (user:userInitial):Promise<responseDefault> => {
+    const { data } = await axios.post('/api/v1/user', user);
+    return data;
+}
+
+export const updatetUser = async (id:string,user:userInitial):Promise<responseDefault> => {
+    const { data } = await axios.post(`/api/v1/user/${id}`, user);
+    return data;
+}
+
 export const getAUserId = async (id='') => {
     try {
         const { data, status } = await axios.get(`/api/v1/user/${id}`);        

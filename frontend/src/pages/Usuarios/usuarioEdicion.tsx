@@ -1,17 +1,18 @@
-import { useEffect } from "react"
-import { Button, Col, Container, Form, Row } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router"
-import Title from "../../components/Title"
-import { defaultUserValues } from "../../redux/actions/userSelect.actions"
-import { changeUserName,changeLastName,changeEmail,changePuesto, usuarioId } from "../../redux/actions/usuarios.actions"
-import { userInitial } from "../../redux/types/usuarios.type"
-import FormLogin from "../Login/components/FormLogin"
+import { useEffect } from "react";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router";
+import Title from "../../components/Title";
+import { defaultUserValues } from "../../redux/actions/userSelect.actions";
+import { changeUserName, changeLastName, changeEmail, changePuesto, usuarioId, actualizarUsuario, guardarUsuario } from "../../redux/actions/usuarios.actions";
+import { userInitial } from "../../redux/types/usuarios.type";
+import FormLogin from "../Login/components/FormLogin";
 
 
-const ancho_col = '6'
+const ancho_col = '6';
 const NuevoUsuario: React.FC = () => {
-    const {idUser} = useParams<{idUser:string}>();
+    const { idUser } = useParams<{ idUser: string }>();
+    const history = useHistory();
     // const { token='NA' } = useSelector((state: any) => state.sesion);
     const {
         id= '',
@@ -24,16 +25,9 @@ const NuevoUsuario: React.FC = () => {
 
     useEffect(() => {
         dispatch(defaultUserValues());
-        idUser && consultalUsuario();
+        idUser && dispatch(usuarioId(idUser));
         
     }, []);
-
-    const consultalUsuario = () => {
-        console.log('consultar...');
-        console.log('id: ', idUser);
-        dispatch(usuarioId(idUser));
-        
-    }
 
     const handleSave = (e: any) => {
         e.preventDefault();
@@ -42,6 +36,16 @@ const NuevoUsuario: React.FC = () => {
         lastName,
         email,
         puesto
+        );
+        const resp = {
+            name,
+            lastname:lastName,
+            email,
+            puesto
+        }
+        dispatch(idUser ?
+            actualizarUsuario(idUser, resp, history.goBack) :
+            guardarUsuario(resp, history.goBack)
         );
     }
 
@@ -112,8 +116,10 @@ const NuevoUsuario: React.FC = () => {
                         </Form.Control>
                     </Form.Group>
                 </Col>
-                <Col sm={ancho_col}></Col>
-                <Col sm={ancho_col} style={{display:'flex',flexDirection:'column-reverse',justifyContent:'center'}}>
+                <Col xs={ancho_col}>
+                    <Button  variant='light' block onClick={history.goBack} type='reset'> cancelar</Button>
+                </Col>
+                <Col xs={ancho_col}>
                     <Button block type='submit'> {idUser?'ACTUALIZAR':'GUARDAR'}</Button>
                 </Col>
             </Row>

@@ -20,11 +20,13 @@ def createSesion(email=''):
 
 def updatePasswordSesion(email='', password='', nPassword=''):
     try:
-        sesion = SesionDoc.objects(
-            email=email, password=generate_password_hash(password))
+        sesion = SesionDoc.objects(email=email).first()
+        print(sesion.email, password)
+        check_passw = check_password_hash(sesion.password, password)
+        print('check_passw ', check_passw)
         hash_passw = generate_password_hash(nPassword)
 
-        if sesion is not None:
+        if sesion is not None and check_passw:
             sesion.password = hash_passw
             sesion.update_date = datetime.datetime.now
             sesion.status = True
