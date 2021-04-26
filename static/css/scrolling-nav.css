@@ -10,3 +10,9 @@ header {
 section {
   padding: 150px 0;
 }
+
+.iconos .col {
+  margin: 8px 0;
+  font-size: 50px;
+  color: #ffffff80 !important;
+}
