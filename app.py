@@ -1,6 +1,6 @@
 import connexion
 import backend.config.database.mongo_bd
-from flask import render_template
+from flask import render_template, redirect
 from flask_cors import CORS
 from flask import url_for
 
@@ -23,6 +23,11 @@ CORS(app.app)  # activacion de cors
 def index(path):
     print(path)
     return render_template('index.html')
+
+
+@app.route('/static/')
+def staticos():
+    return redirect('/')
 
 
 @app.route('/')
