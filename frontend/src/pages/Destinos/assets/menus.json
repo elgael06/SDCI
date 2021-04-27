@@ -1,5 +1,0 @@
-[
-    {"route":"Destinos/nuevo","title":"Nuevo Destino"},
-    {"route":"Destinos/lista","title":"Lista Destino"},
-    {"route":"Destinos/filtro","title":"Mis Destino"}
-]
