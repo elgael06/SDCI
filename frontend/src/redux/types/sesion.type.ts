@@ -8,7 +8,8 @@ export type sesionStateType = {
     status  : boolean;
 };
 
-export default {
+const sesion={
     ADD_SESION: 'ADD_SESION',
     REMOVE_SESION:'REMOVE_SESION'
 }
+export default sesion;

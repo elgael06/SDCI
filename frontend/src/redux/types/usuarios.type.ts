@@ -8,7 +8,7 @@ export type userInitial = {
     puesto?: string,
 };
 
-export default {
+const usuarios = {
     LISTA_USUARIOS: 'LISTA_USUARIOS',
     REMOVE_USUARIOS:'REMOVE_USUARIOS',
     SELECTED_USER_ID: 'SELECTED_USER_ID',
@@ -18,3 +18,4 @@ export default {
     USER_EMAIL: 'USER_EMAIL',
     USER_PUESTO:'USER_PUESTO',
 }
+export default usuarios;

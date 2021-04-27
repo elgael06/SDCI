@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { IonBadge, IonIcon, IonImg } from "@ionic/react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import FormLogin from "../Login/components/FormLogin";
@@ -55,10 +56,10 @@ const Editar = () => {
                         '001235',
                         '001233',
                         '001235'
-                    ].map(e =><>
-                        <IonBadge color="secondary">{e}</IonBadge>
+                    ].map((e,i) =><Fragment key={i} >
+                        <IonBadge  color="secondary">{e}</IonBadge>
                         {' '}
-                        </>
+                        </Fragment>
                     )}
                         </section>
                 </Col>

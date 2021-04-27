@@ -14,20 +14,20 @@ const NuevoUsuario: React.FC = () => {
     const { idUser } = useParams<{ idUser: string }>();
     const history = useHistory();
     // const { token='NA' } = useSelector((state: any) => state.sesion);
+    const dispatch = useDispatch();
     const {
-        id= '',
         name= '',
         lastName= '',
         email= '',
         puesto=''
     }: userInitial = useSelector((state: any) => state.usurioSeleccionado);
-    const dispatch = useDispatch();
 
-    useEffect(() => {
+    const _initial = () => {
         dispatch(defaultUserValues());
         idUser && dispatch(usuarioId(idUser));
         
-    }, []);
+    }
+    useEffect(_initial, [idUser]);
 
     const handleSave = (e: any) => {
         e.preventDefault();

@@ -8,8 +8,10 @@ export type userInfoInitType = {
     status: boolean
 };
 
-export default {
+const  userInfo = {
     ADD_INFO_USER_SESION: 'ADD_INFO_USER_SESION',
     ADD_INFO_TEL: 'ADD_INFO_TEL',
     ADD_INFO_FECHA:'ADD_INFO_FECHA'
 }
+
+export default userInfo;

@@ -1,9 +1,8 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonLabel, IonList, IonTitle } from "@ionic/react"
 import Layout from "../../components/Layout/Layout"
 import data_app from '../../assets/data_app.json';
-import BarCodeScanner from 'barcode-react-scanner';
-
-import { useState } from "react";
+// import BarCodeScanner from 'barcode-react-scanner';
+// import { useState } from "react";
 
 
 const Home = ():JSX.Element => { 
@@ -52,21 +51,21 @@ const Home = ():JSX.Element => {
     </Layout>
 }
 
-const TestingComponent = (): JSX.Element => {
-const [code, setCode] = useState<string>('')
+// const TestingComponent = (): JSX.Element => {
+// const [code, setCode] = useState<string>('')
 
-    return (
-    <>
-    { code && <p> code </p> }
-    <BarCodeScanner onUpdate={ (err, resp): void => {
-        if(resp) {
-            setCode(resp.getText())
-        }
-    }}
-    />
-    </>
-);
-}
+//     return (
+//     <>
+//     { code && <p> code </p> }
+//     <BarCodeScanner onUpdate={ (err, resp): void => {
+//         if(resp) {
+//             setCode(resp.getText())
+//         }
+//     }}
+//     />
+//     </>
+// );
+// }
 
 
 export default Home;

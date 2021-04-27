@@ -8,7 +8,6 @@ import { userInitial } from "../../redux/types/usuarios.type";
 
 
 const ListaUsuarios = () => {
-    // const { token='NA' } = useSelector((state: any) => state.sesion);
     const usuarios:userInitial[] = useSelector((state: any) => state.usuarios);
     const dispatch = useDispatch();
     const history = useHistory();

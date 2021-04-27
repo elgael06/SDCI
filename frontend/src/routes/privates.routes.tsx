@@ -2,10 +2,11 @@ import { IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route, Switch } from 'react-router';
 import Menu from "../components/Menu/Menu";
+//pages
+import Home from "../pages/home/Home";
 import RoutesActividades from "../pages/Actividades/routes";
 import RoutesDestinos from "../pages/Destinos/routes";
 import RoutesGastos from "../pages/Gastos/routes";
-import Home from "../pages/home/Home";
 import RoutesPlatillos from "../pages/Platillos/routes";
 import RoutesProductos from "../pages/productos/routes";
 import RoutesUsuarios from "../pages/Usuarios/routes";

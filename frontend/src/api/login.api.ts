@@ -9,7 +9,7 @@ export const login = async (username = '', password = '') => {
                 'Authorization': `Basic ${token}`
             },
         });
-        if (status == 200) {            
+        if (status === 200) {            
             axios.defaults.headers.post['x-access-tokens'] = data.token;
             axios.defaults.headers.get['x-access-tokens'] = data.token;
             axios.defaults.headers.put['x-access-tokens'] = data.token;
@@ -37,7 +37,7 @@ export const sendConfirmInfoLogin = async (datos: {
     const error = { messaje: 'Error en la respuesta! ', status: false };
     try {
         const { data, status } = await axios.post(url, datos);
-        return status == 200 ? { ...data } : error;
+        return status === 200 ? { ...data } : error;
     } catch (err) {
         error.messaje += err.toString();
         console.log(err);

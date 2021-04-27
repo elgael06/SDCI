@@ -13,7 +13,7 @@ export type efectaInitial = {
     
 }
 
-export default {
+const effects = {
     ON_LOADDING: 'ON_LOADDING',
     OFF_LOADDING: 'OFF_LOADDING',
     ON_MESSAGE: 'ON_MESSAGE',
@@ -23,3 +23,4 @@ export default {
     ON_MODAL: 'ON_MODAL',
     OFF_MODAL:'OFF_MODAL'
 }
+export default effects;
