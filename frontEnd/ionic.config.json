@@ -1,0 +1,9 @@
+{
+  "name": "Sistema de control interno.",
+  "integrations": {
+    "capacitor": {},
+    "cordova":{}
+  },
+  "type": "react",
+  "id": "286c0e07"
+}
