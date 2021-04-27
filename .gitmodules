@@ -1,0 +1,3 @@
+[submodule "front-lamar"]
+	path = front-lamar
+	url = https://github.com/elgael06/front-lamar.git
