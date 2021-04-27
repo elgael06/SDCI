@@ -9,8 +9,8 @@ const RoutesGastos: React.FC = () => {
     
     return <Layout name='Gastos'>
             <Switch>
-                <Route path='/admin/Gastos/' exact={true} component={Gasto} />
-                <Route path='/admin/Gastos/nuevo' exact={true} component={NuevoGasto} />            
+                <Route path='/control/Gastos/' exact={true} component={Gasto} />
+                <Route path='/control/Gastos/nuevo' exact={true} component={NuevoGasto} />            
             </Switch>
         </Layout>
 }

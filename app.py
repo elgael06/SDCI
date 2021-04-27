@@ -18,11 +18,11 @@ app.add_api('sesion_v1.yml')  # api v1 sesion
 CORS(app.app)  # activacion de cors
 
 
-@app.route('/admin', defaults={'path': '/admin'})
-@app.route('/admin/<path:path>')
+@app.route('/control', defaults={'path': '/control'})
+@app.route('/control/<path:path>')
 def index(path):
     print(path)
-    return render_template('index.html')
+    return render_template('control.html')
 
 
 @app.route('/static/')
@@ -32,7 +32,7 @@ def staticos():
 
 @app.route('/')
 def landing():
-    return render_template('landing/index.html')
+    return render_template('landing.html')
 
 
 if __name__ == "__main__":

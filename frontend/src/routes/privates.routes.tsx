@@ -20,19 +20,19 @@ const PrivateRoutes = () => {
           <Route path="/" exact={true}>
               <Redirect to="/page/Inicio" />
           </Route>
-          <Route path="/admin/login" exact={true}>
-              <Redirect to="/admin/Inicio" />
+          <Route path="/control/login" exact={true}>
+              <Redirect to="/control/Inicio" />
           </Route>
-          <Route path="/admin" exact={true}>
-              <Redirect to="/admin/Inicio" />
+          <Route path="/control" exact={true}>
+              <Redirect to="/control/Inicio" />
           </Route>
-          <Route path="/admin/Inicio" exact={true} component={Home} />
-          <Route path="/admin/Platillos" component={RoutesPlatillos} />
-          <Route path="/admin/Actividades" component={RoutesActividades} />
-          <Route path="/admin/Destinos" component={RoutesDestinos} />
-          <Route path="/admin/Gastos" component={RoutesGastos} />
-          <Route path="/admin/Productos" component={RoutesProductos} />
-          <Route path='/admin/Usuarios' component={RoutesUsuarios} />
+          <Route path="/control/Inicio" exact={true} component={Home} />
+          <Route path="/control/Platillos" component={RoutesPlatillos} />
+          <Route path="/control/Actividades" component={RoutesActividades} />
+          <Route path="/control/Destinos" component={RoutesDestinos} />
+          <Route path="/control/Gastos" component={RoutesGastos} />
+          <Route path="/control/Productos" component={RoutesProductos} />
+          <Route path='/control/Usuarios' component={RoutesUsuarios} />
         </Switch>
       </IonRouterOutlet>
     </IonSplitPane>

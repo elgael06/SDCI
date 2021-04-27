@@ -21,7 +21,7 @@ const publicUrlOrPath = getPublicUrlOrPath(
   process.env.PUBLIC_URL
 );
 
-const buildPath = process.env.BUILD_PATH || '../static';
+const buildPath = process.env.BUILD_PATH || '../static/control';
 
 const moduleFileExtensions = [
   'web.mjs',

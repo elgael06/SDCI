@@ -7,7 +7,7 @@ const RoutesDestinos:React.FC = () => {
 
     return <Layout name='Destinos' >
         <Switch >
-            <Route path='/admin/Destinos/' exact={true} component={Destinos} />
+            <Route path='/control/Destinos/' exact={true} component={Destinos} />
         </Switch>
     </Layout>
 }

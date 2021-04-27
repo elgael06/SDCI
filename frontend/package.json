@@ -1,7 +1,7 @@
 {
   "name": "front-sdci",
   "homepage": "/",
-  "static": "/static",
+  "static": "/static/control",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -142,7 +142,7 @@
     "@types/react-redux": "^7.1.16",
     "react-scripts": "4.0.3"
   },
-  "description": "An Ionic project",
+  "description": "sistema front para control de sistema.",
   "proxy": "http://localhost:8000",
   "jest": {
     "roots": [
