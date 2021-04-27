@@ -35,5 +35,12 @@ def landing():
     return render_template('landing.html')
 
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def error(path):
+    print(path)
+    return render_template('_404.html', path=path)
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
