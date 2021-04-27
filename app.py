@@ -39,7 +39,7 @@ def landing():
 @app.route('/<path:path>')
 def error(path):
     print(path)
-    return render_template('_404.html', path=path)
+    return render_template('_404.html', path=path), 404
 
 
 if __name__ == "__main__":
