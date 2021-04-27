@@ -1,0 +1,3 @@
+[submodule "front-control"]
+	path = front-control
+	url = https://github.com/elgael06/front-control.git
