@@ -1,5 +1,0 @@
-[
-    {"route":"Platillos/nuevo","title":"Nuevo Platillo por destino"},
-    {"route":"Platillos/lista","title":"Lista Platillos"},
-    {"route":"Platillos/filtro","title":"Mis Platillos"}
-]
