@@ -1,6 +1,5 @@
 
 - guardado de los usuarios.
-- modificar usuarios.
 - agregar boton perfil usuario login en top-app-bar.
 - agregar menu al boton perfil [ nombre usuario, ver perfil, cerrar sesion ].
 - corregir pantalla de gastos.

@@ -17,6 +17,12 @@ def createSesion(email=''):
         print('error')
         return False
 
+def updateEmail(email='',new_email=''):
+    print(email)
+    sesion = SesionDoc.objects(email=email).first()
+    sesion.email = new_email
+    sesion.save()
+
 
 def updatePasswordSesion(email='', password='', nPassword=''):
     try:
