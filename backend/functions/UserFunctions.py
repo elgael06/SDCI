@@ -49,22 +49,21 @@ def userInsert(name, lastName, email, puesto, userCreate=''):
 
     try:
         usr = UserDoc()
-        usr.name=name,
-        usr.lastName=lastName,
-        usr.email=email,
+        usr.name=name
+        usr.lastName=lastName
+        usr.email=email
         usr.userCreate=userCreate
+        usr.save()
         print('userCreate {}'.format(usr.userCreate))
-        usr.save(force_insert=True)
-        print('user id: {}'.format(usr.id))
-        sesion = createSesion(email=email)        
+        
+        sesion = createSesion(usr.email)
         if sesion:
             createUserData(puesto=puesto, id=usr.id)
             respuesta['status'] = True
             respuesta['message'] = 'El usuario fue guardado: id {id}...'.format(
                 id=usr.id)
-    except Exception:
+    except:
         print('error1')
-        # print(e)
         respuesta['message'] = 'Error al guardar los datos de usuario! name:{}, lastName:{} ,email:{}, puesto:{}, creator:{}.'.format(name,lastName,email,puesto,userCreate)
     return respuesta
 
@@ -112,22 +111,21 @@ def userConfirm(email='', phone='', date='', password='', nPassword=''):
         return {'messaje': 'Error al confirmar datos de usuario!', 'status': False}
 
 def updateUser(current_user='',id='',name='',last_name='',email=''):
-    try:
-        user = UserDoc.objects(id=id).first()
-
-        old_email = user.email
-
-        user.name = name
-        user.lasName = last_name
-        user.date_modified = datetime.datetime.now
-        user.email = email
-
-        user.save()
-        print('entro...',current_user)
+    user = UserDoc.objects(id=id).first()
+    old_email = user.email
+    
+    user.name = name
+    user.lastName = last_name
+    user.userCreate=current_user
+    user.date_modified = datetime.datetime.now
+    user.email = email
+    print('entro...',current_user)
+    user.save()
+    if old_email != email:
         updateEmail(old_email,email)
-    except Exception(e):
-        print('error')
-        print(e)
+    
+        
+    
 
 def updateDatePuesto(id,puesto):
     data = UserDataConfirm.objects(userId=id).first()

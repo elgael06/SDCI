@@ -35,7 +35,8 @@ def create(current_user,user):
 
 @token_required
 def update(current_user, id, user):
-    try:
+    # try:
+    if True:
         name = user.get('name', None)
         lasName = user.get('lastname', None)
         email = user.get('email', None)
@@ -43,12 +44,17 @@ def update(current_user, id, user):
         
         exite = userId(id)
         if exite['user']:
-            updateUser(current_user,id,name,lasName,email)
+            updateUser(
+                current_user=current_user,
+                id=id,name=name,
+                last_name=lasName,
+                email=email
+                )
             updateDatePuesto(id,puesto)
             return {'message': 'Datos actualizado...', 'status': True}        
         return {'message': 'Usuario no encontrado!', 'status': False}
-    except :
-        return {'message': 'Error al guardar Usuario!', 'status': False}, 404
+    # except :
+    #     return {'message': 'Error al guardar Usuario!', 'status': False}, 404
 
 
 def confirm(data):
