@@ -1,5 +1,9 @@
 # Aplicacion base para sistemas web
 
+- usuario : invitado@mya-app.tech
+- contraseña : 12345678
+``` la sesion se maneja por token asi que si otra persona inicia sesion la anterior perdera el token y no podra hacer solicitud. ```
+
 ## Especificaciones:
 
 - Esta aplicacion se creo para servir de base a sistemas web y mobiles.
@@ -29,6 +33,7 @@ Antes de iniciar se recomientda crear un entorno virtual.
 ## Ejecucion:
 
 para equecurar la aplicacion se debe de ejecutar el comandio `python app.py ` esto para correr en modo desarrollo.
+si se encuentra en un sistema linux puede ejecutar el comando ``` make dev ``` para desarrollo.
 
 ## Desarrollo de front:
 
@@ -41,4 +46,4 @@ Para ejecurtar en modo desarrollo sigue los siguientes pasos:
 
 ## Directorios:
 
-Los archivos estaticos se agregaran en la carpeta static de la raiz de la aplicacion en la carpeta template se guardara el index.html
+Los archivos estaticos se agregaran en la carpeta static de la raiz de la aplicacion en la carpeta template se guardara el control.html y la pagina principal se muestra el contenido de landing.html
