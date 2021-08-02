@@ -37,6 +37,9 @@ si se encuentra en un sistema linux puede ejecutar el comando ``` make dev ``` p
 
 ## Desarrollo de front:
 
+### descargar cambis de submodulo.
+`git submodule update --init --recursive`
+
 Para ejecurtar en modo desarrollo sigue los siguientes pasos:
 
 - Necesitas node 10 o superior.
