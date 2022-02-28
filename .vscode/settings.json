@@ -1,4 +1,8 @@
 {
     "python.pythonPath": "env/bin/python",
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "DockerRun.DisableDockerrc": true,
+    "DockerRun.Containers": [
+        "5f92057506e3"
+    ]
 }
