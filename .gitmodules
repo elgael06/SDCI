@@ -4,4 +4,4 @@
 
 [submodule "store-products"]
 	path = store-products
-	url = git@github.com:elgael06/lvp-landing.git
+	url = https://github.com/elgael06/lvp-landing.git
