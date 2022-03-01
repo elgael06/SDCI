@@ -25,6 +25,14 @@ def index(path):
     return render_template('control.html')
 
 
+@app.route('/store-products', defaults={'path': '/store-products'})
+@app.route('/store-products/<path:path>')
+def store_products(path):
+    # return 'hola'
+    print('store_products')
+    return render_template('/store-products/index.html')
+
+
 @app.route('/static/')
 def staticos():
     return redirect('/')

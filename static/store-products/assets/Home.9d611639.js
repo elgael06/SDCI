@@ -1,0 +1,1 @@
+import{j as e,F as s,a}from"./index.975c6fd6.js";import"./vendor.ed9a3420.js";const l=()=>e(s,{children:e("div",{className:"hero-body",children:a("div",{className:"container",children:["Hola!, yo soy...",e("h1",{className:"title is-1",children:"Cristian Val"}),e("h2",{className:"subtitle is-3",children:"Developer"})]})})});export{l as default};
