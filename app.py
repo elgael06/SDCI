@@ -18,14 +18,14 @@ app.add_api('sesion_v1.yml')  # api v1 sesion
 CORS(app.app)  # activacion de cors
 
 
-@app.route('/control', defaults={'path': '/control'})
+@app.route('/control/', defaults={'path': '/control'})
 @app.route('/control/<path:path>')
 def index(path):
     print(path)
     return render_template('control.html')
 
 
-@app.route('/store-products', defaults={'path': '/store-products'})
+@app.route('/store-products/', defaults={'path': '/store-products/'})
 @app.route('/store-products/<path:path>')
 def store_products(path):
     # return 'hola'
