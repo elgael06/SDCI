@@ -8,7 +8,7 @@ from flask import url_for
 # instancia de la app con la rutas de configuracion de las api.
 ##
 app = connexion.FlaskApp(
-    __name__, options={"swagger_ui": False}, specification_dir='./backend/config/api/')
+    __name__, options={"swagger_ui": True}, specification_dir='./backend/config/api/')
 
 ###
 # se agregan las rutas al app

@@ -1,7 +1,7 @@
 
 import datetime
 from backend.models.UserDoc import UserDoc, UserDataConfirm
-from backend.functions.SesionFunctions import createSesion, updatePasswordSesion,updateEmail
+from backend.functions.SesionFunctions import createSesion, updatePasswordSesion, updateEmail
 
 
 def getUser(email=''):
@@ -49,13 +49,13 @@ def userInsert(name, lastName, email, puesto, userCreate=''):
 
     try:
         usr = UserDoc()
-        usr.name=name
-        usr.lastName=lastName
-        usr.email=email
-        usr.userCreate=userCreate
+        usr.name = name
+        usr.lastName = lastName
+        usr.email = email
+        usr.userCreate = userCreate
         usr.save()
         print('userCreate {}'.format(usr.userCreate))
-        
+
         sesion = createSesion(usr.email)
         if sesion:
             createUserData(puesto=puesto, id=usr.id)
@@ -64,7 +64,8 @@ def userInsert(name, lastName, email, puesto, userCreate=''):
                 id=usr.id)
     except:
         print('error1')
-        respuesta['message'] = 'Error al guardar los datos de usuario! name:{}, lastName:{} ,email:{}, puesto:{}, creator:{}.'.format(name,lastName,email,puesto,userCreate)
+        respuesta['message'] = 'Error al guardar los datos de usuario! name:{}, lastName:{} ,email:{}, puesto:{}, creator:{}.'.format(
+            name, lastName, email, puesto, userCreate)
     return respuesta
 
 
@@ -110,25 +111,23 @@ def userConfirm(email='', phone='', date='', password='', nPassword=''):
         print('error en cambio de contraseña')
         return {'messaje': 'Error al confirmar datos de usuario!', 'status': False}
 
-def updateUser(current_user='',id='',name='',last_name='',email=''):
+
+def updateUser(current_user='', id='', name='', last_name='', email=''):
     user = UserDoc.objects(id=id).first()
     old_email = user.email
-    
+
     user.name = name
     user.lastName = last_name
-    user.userCreate=current_user
+    user.userCreate = current_user
     user.date_modified = datetime.datetime.now
     user.email = email
-    print('entro...',current_user)
+    print('entro...', current_user)
     user.save()
     if old_email != email:
-        updateEmail(old_email,email)
-    
-        
-    
+        updateEmail(old_email, email)
 
-def updateDatePuesto(id,puesto):
+
+def updateDatePuesto(id, puesto):
     data = UserDataConfirm.objects(userId=id).first()
     data.puesto = puesto
     data.save()
-
