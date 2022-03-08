@@ -1,3 +1,7 @@
 [submodule "front-control"]
 	path = front-control
 	url = https://github.com/elgael06/front-control.git
+
+[submodule "store-products"]
+	path = store-products
+	url = https://github.com/elgael06/lvp-landing.git

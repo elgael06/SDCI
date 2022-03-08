@@ -8,7 +8,7 @@ from flask import url_for
 # instancia de la app con la rutas de configuracion de las api.
 ##
 app = connexion.FlaskApp(
-    __name__, options={"swagger_ui": False}, specification_dir='./backend/config/api/')
+    __name__, options={"swagger_ui": True}, specification_dir='./backend/config/api/')
 
 ###
 # se agregan las rutas al app
@@ -18,11 +18,19 @@ app.add_api('sesion_v1.yml')  # api v1 sesion
 CORS(app.app)  # activacion de cors
 
 
-@app.route('/control', defaults={'path': '/control'})
+@app.route('/control/', defaults={'path': '/control'})
 @app.route('/control/<path:path>')
 def index(path):
     print(path)
     return render_template('control.html')
+
+
+@app.route('/store-products/', defaults={'path': '/store-products/'})
+@app.route('/store-products/<path:path>')
+def store_products(path):
+    # return 'hola'
+    print('store_products')
+    return render_template('/store-products/index.html')
 
 
 @app.route('/static/')

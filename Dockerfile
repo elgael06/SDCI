@@ -9,10 +9,10 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# FROM node:14-alpine
-# WORKDIR /home/app/frontend/
+# FROM node:16-alpine
+# WORKDIR /home/app/front-control/
 # RUN ls
-# RUN npm run build 
+# RUN npm start
 # WORKDIR /home/app/
 # RUN rm -rf frontend/
 # COPY ./static    .
