@@ -1,4 +1,5 @@
 import connexion
+import os
 import backend.config.database.mongo_bd
 from flask import render_template, redirect
 from flask_cors import CORS
@@ -50,5 +51,6 @@ def error(path):
     return render_template('_404.html', path=path), 404
 
 
+print(os.environ.get("PORT"))
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
